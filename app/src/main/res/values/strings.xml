@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Eftkad North Shoubra</string>
+    <string name="title_activity_login">Login</string>
+    <string name="user_name">user name</string>
+    <string name="password">password</string>
+    <string name="login">Login</string>
+    <string name="title_activity_home">الرئيسية</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="enter_new_member">ادخل عضو جديد</string>
+    <string name="enter_new_user">ادخل مستخدم جديد</string>
+    <string name="enter_new_parent">ادخل درجة قرابة جديدة</string>
+    <string name="enter_new_qualification">ادخل مؤهل جديد</string>
+    <string name="enter_new_job">ادخل وظيفة جديدة</string>
+    <string name="enter_fathers">ادخل آباء الكنيسة</string>
+    <string name="enter_meetings">ادخل اجتماعات الكنيسة</string>
+    <string name="enter_new_street">ادخل شارع جديد</string>
+    <string name="enter_new_area">ادخل منطقة جديدة</string>
+    <string name="title_activity_enter_new_area">منطقة جديدة</string>
+    <string name="title_activity_enter_new_street">شارع جديد</string>
+    <string name="title_activity_enter_new_meeting">اضافة اجتماع</string>
+    <string name="title_activity_enter_father">اضافة أب كاهن</string>
+    <string name="title_activity_enter_new_job">وظيفة حديدة</string>
+    <string name="title_activity_enter_qualifaction">مؤهل جديد</string>
+    <string name="title_activity_enter_new_parent">صلة قرابة جديدة</string>
+    <string name="title_activity_enter_new_user">مستخدم جديد</string>
+    <string name="title_activity_enter_new_member">عضو جديد</string>
+</resources>

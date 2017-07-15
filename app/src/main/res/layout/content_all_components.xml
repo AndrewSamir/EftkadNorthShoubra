@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/_16sdp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_all_components">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/marginBottom">
+
+                <include layout="@layout/dropdown_general" />
+            </LinearLayout>
+
+
+            <RatingBar
+                android:id="@+id/rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/marginBottom"
+
+                android:maxHeight="48dp"
+                android:minHeight="48dp"
+                android:numStars="5"
+                android:progressBackgroundTint="@color/inactive_rating"
+                android:progressTint="@color/active_rating"
+                android:rating="1"
+                android:stepSize="1"
+                android:theme="@style/RatingBar" />
+
+            <!--radio button segment-->
+            <cn.carbs.android.segmentcontrolview.library.SegmentControlView
+                android:id="@+id/scv"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/viewHeight"
+                android:layout_marginBottom="@dimen/marginBottom"
+                android:layout_marginTop="5dp"
+                android:layoutDirection="ltr"
+                android:padding="3dp"
+                android:visibility="visible"
+                app:scv_BackgroundNormalColor="@color/inactive_rating"
+                app:scv_BackgroundSelectedColor="@color/colorAccent"
+                app:scv_FrameColor="@color/colorInactiveField"
+                app:scv_FrameCornerRadius="3dp"
+                app:scv_FrameWidth="1dp"
+                app:scv_Gradient="true"
+                app:scv_SegmentPaddingVertical="2dp"
+                app:scv_TextArray="@array/segment_control_list_map"
+                app:scv_TextNormalColor="@color/colorInactiveField"
+                app:scv_TextSelectedColor="@color/colorWhite"
+                app:scv_TextSize="@dimen/textSize" />
+
+            <EditText
+                android:id="@+id/edt"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/viewHeight"
+                android:layout_marginBottom="@dimen/marginBottom"
+                android:background="@drawable/dropdown_background"
+                android:hint="* رقم العضويه"
+                android:padding="@dimen/_5sdp"
+                android:textSize="@dimen/textSize" />
+
+            <!--with right drawer-->
+            <EditText
+                android:id="@+id/edtMailLogin"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/viewHeight"
+                android:layout_marginBottom="@dimen/marginBottom"
+                android:background="@drawable/dropdown_background"
+                android:drawablePadding="@dimen/_7sdp"
+                android:drawableRight="@drawable/ic_action_mail"
+
+                android:hint="mail"
+                android:padding="@dimen/_5sdp"
+                android:textSize="@dimen/textSize" />
+
+            <CheckBox
+                android:id="@+id/ch"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/viewHeight"
+                android:layout_marginBottom="@dimen/marginBottom"
+                android:gravity="right|center_vertical"
+                android:layoutDirection="rtl"
+                android:text="كلمه عربى" />
+
+
+            <!--switch-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/marginBottom"
+                android:layoutDirection="rtl"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/switchA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/viewHeight"
+                    android:layoutDirection="ltr"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="@dimen/_15sdp"
+                    android:text="شارك مكانى على الخريطة مع فيكادر"
+                    android:textSize="@dimen/textSize" />
+            </LinearLayout>
+
+
+            <!--multi lines-->
+            <EditText
+                android:id="@+id/edtF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/marginBottom"
+                android:background="@drawable/dropdown_background"
+                android:gravity="top"
+                android:hint="* رقم العضويه"
+                android:minHeight="@dimen/_100sdp"
+                android:padding="@dimen/_5sdp"
+                android:textSize="@dimen/textSize" />
+
+            <!--primary button-->
+            <Button
+                android:id="@+id/btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/marginBottom"
+                android:background="@drawable/button_background_primary"
+                android:padding="@dimen/_5sdp"
+                android:text="بحث"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/textSize" />
+
+            <!--accent button-->
+            <Button
+                android:id="@+id/btnF"
+                android:layout_width="match_parent"
+
+                android:layout_height="@dimen/viewHeight"
+                android:layout_marginBottom="@dimen/marginBottom"
+                android:background="@drawable/button_background_accent"
+                android:padding="@dimen/_5sdp"
+                android:text="بحث"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/textSize" />
+
+            <!--accent color-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/marginBottom"
+                android:gravity="center"
+                android:text="بحث متقدم"
+
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/textSize" />
+
+            <!--primary color-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/marginBottom"
+                android:gravity="center"
+                android:text="بحث متقدم"
+
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/textSize" />
+
+            <!--inactive color-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/marginBottom"
+                android:gravity="right"
+                android:text="بحث فى"
+                android:textColor="@color/colorInactiveField"
+                android:textSize="@dimen/textSize" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/viewHeight"
+                android:layout_marginBottom="@dimen/marginBottom"
+                android:layoutDirection="rtl"
+                android:orientation="horizontal"
+                android:weightSum="6">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/viewHeight"
+                    android:layout_marginBottom="@dimen/marginBottom"
+                    android:layout_weight="3"
+                    android:layoutDirection="rtl"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
+
+                    <LinearLayout
+                        android:id="@+id/imgCalendarFrom"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:layout_weight="2"
+                        android:background="@drawable/button_background_accent"
+                        android:gravity="center"
+
+                        android:layoutDirection="rtl">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:padding="@dimen/_3sdp"
+                            android:src="@drawable/ic_action_access_time" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="from"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/textSize" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="0dp"
+
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:layout_weight="3"
+                        android:background="@drawable/dropdown_background"
+                        android:gravity="center_vertical"
+                        android:hint="from"
+                        android:padding="@dimen/_5sdp"
+
+                        android:textSize="@dimen/textSize" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/viewHeight"
+                    android:layout_marginBottom="@dimen/marginBottom"
+                    android:layout_weight="3"
+                    android:layoutDirection="rtl"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
+
+                    <LinearLayout
+                        android:id="@+id/imgCalendarTo"
+
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:layout_weight="2"
+                        android:background="@drawable/button_background_accent"
+                        android:gravity="center"
+
+                        android:layoutDirection="rtl">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:padding="@dimen/_3sdp"
+                            android:src="@drawable/ic_action_access_time" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+
+                            android:layout_height="wrap_content"
+                            android:text="to"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/textSize" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:layout_weight="3"
+
+                        android:background="@drawable/dropdown_background"
+                        android:gravity="center_vertical"
+                        android:hint="الى"
+                        android:padding="@dimen/_5sdp"
+
+                        android:textSize="@dimen/textSize" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/viewHeight"
+                android:layout_marginBottom="@dimen/marginBottom"
+                android:layoutDirection="rtl"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|right"
+                    android:text="required_hours"
+                    android:textColor="@color/colorInactiveField"
+                    android:textSize="@dimen/textSize" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <include layout="@layout/xml_counter" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearUploadCvEditProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/viewHeight"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/activityMargin"
+                android:layoutDirection="rtl"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_action_mail"
+                    android:tint="@color/colorAccent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingRight="@dimen/_7sdp"
+                    android:text="upload_cv"
+                    android:textSize="@dimen/textSize" />
+            </LinearLayout>
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img"
+                android:layout_width="@dimen/imgWidth"
+                android:layout_height="@dimen/imgWidth"
+                android:layout_marginBottom="@dimen/marginBottom"
+                android:src="@drawable/trumb" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>

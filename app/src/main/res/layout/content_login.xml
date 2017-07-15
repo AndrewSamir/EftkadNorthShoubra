@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/activityMargin"
+    android:gravity="center"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.samir.andrew.eftkadnorthshoubra.views.activities.Login"
+    tools:showIn="@layout/activity_login">
+
+    <ImageView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher" />
+
+    <EditText
+        android:id="@+id/edtLoginMail"
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/viewHeight"
+        android:layout_marginBottom="@dimen/marginBottom"
+        android:layout_marginTop="@dimen/marginTop"
+        android:background="@drawable/dropdown_background"
+        android:hint="@string/user_name"
+        android:padding="@dimen/_5sdp"
+        android:textSize="@dimen/textSize" />
+
+    <EditText
+        android:id="@+id/edtLoginPassword"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/viewHeight"
+        android:layout_marginBottom="@dimen/marginBottom"
+        android:background="@drawable/dropdown_background"
+        android:hint="@string/password"
+        android:padding="@dimen/_5sdp"
+        android:textSize="@dimen/textSize" />
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/marginBottom"
+        android:layout_marginTop="@dimen/marginTop"
+        android:background="@drawable/button_background_primary"
+        android:padding="@dimen/_5sdp"
+        android:text="@string/login"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/textSize" />
+
+</LinearLayout>

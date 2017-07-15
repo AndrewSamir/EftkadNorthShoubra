@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "917352874652",
+    "firebase_url": "https://eftkadnorthshoubra.firebaseio.com",
+    "project_id": "eftkadnorthshoubra",
+    "storage_bucket": "eftkadnorthshoubra.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:917352874652:android:8dbe93cde439e5b0",
+        "android_client_info": {
+          "package_name": "com.samir.andrew.eftkadnorthshoubra"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "917352874652-9civu9gldi7n4ojnr28kis9plm28k7b0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.samir.andrew.eftkadnorthshoubra",
+            "certificate_hash": "f0b33f4178f95ce709b043bcf576aca41b8c419b"
+          }
+        },
+        {
+          "client_id": "917352874652-sjlitc8ca2ejusblcma7ffm9a83it24l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYPqW83SBQukye2qLAiNDuDL0VX72Y56c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "917352874652-sjlitc8ca2ejusblcma7ffm9a83it24l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

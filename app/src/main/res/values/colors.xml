@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#003399 </color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#1497dc</color>
+    <color name="colorSwitchThumbNormal">#000000</color>
+
+    <color name="colorBackground">#f4f4f4</color>
+    <color name="colorInactiveField">#7f7f7f</color>
+    <color name="colorNotificationInactive">#002244</color>
+
+    <color name="colorStrokeNormal">#303F9F</color>
+    <color name="colorStrokeSelected">#000</color>
+    <color name="colorStrokeError">#FF00</color>
+
+    <color name="active_rating">#edb10f</color>
+    <color name="inactive_rating">#d2d2d2</color>
+    <color name="colorTvLabel">#000308</color>
+
+    <color name="colorLabel">#7f7f7f</color>
+    <color name="colorSeparator">#d2d2d2</color>
+    <color name="colorChatMessageTime">#99ccff</color>
+
+    <color name="colorTwitterBackground">#2ca7e0</color>
+    <color name="colorMailBackground">#ff9900</color>
+    <color name="colorFacebookBackground">#3a5ba0</color>
+    <color name="colorIndicatorActive">#fdaf2a</color>
+    <color name="colorIndicator">#fe8c25</color>
+
+    <!-- cat tree-->
+    <color name="colorCatGray">#eeeeee</color>
+    <color name="colorWhite">#FFFFFF</color>
+</resources>

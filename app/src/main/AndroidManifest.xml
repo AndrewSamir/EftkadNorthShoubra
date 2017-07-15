@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.samir.andrew.eftkadnorthshoubra">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".views.activities.SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".views.activities.Login"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".views.activities.HomeActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="5c58e06fe18f16b6e8b0fdb11fdc16313afe8f46" />
+
+        <activity
+            android:name=".views.activities.EnterNewArea"
+            android:label="@string/title_activity_enter_new_area"
+            android:parentActivityName=".views.activities.HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.samir.andrew.eftkadnorthshoubra.views.activities.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".views.activities.EnterNewStreet"
+            android:label="@string/title_activity_enter_new_street"
+            android:parentActivityName=".views.activities.HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.samir.andrew.eftkadnorthshoubra.views.activities.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".views.activities.EnterNewMeeting"
+            android:label="@string/title_activity_enter_new_meeting"
+            android:parentActivityName=".views.activities.HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.samir.andrew.eftkadnorthshoubra.views.activities.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".views.activities.EnterFather"
+            android:label="@string/title_activity_enter_father"
+            android:parentActivityName=".views.activities.HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.samir.andrew.eftkadnorthshoubra.views.activities.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".views.activities.EnterNewJob"
+            android:label="@string/title_activity_enter_new_job"
+            android:parentActivityName=".views.activities.HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.samir.andrew.eftkadnorthshoubra.views.activities.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".views.activities.EnterQualifaction"
+            android:label="@string/title_activity_enter_qualifaction"
+            android:parentActivityName=".views.activities.HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.samir.andrew.eftkadnorthshoubra.views.activities.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".views.activities.EnterNewParent"
+            android:label="@string/title_activity_enter_new_parent"
+            android:parentActivityName=".views.activities.HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.samir.andrew.eftkadnorthshoubra.views.activities.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".views.activities.EnterNewUser"
+            android:label="@string/title_activity_enter_new_user"
+            android:parentActivityName=".views.activities.HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.samir.andrew.eftkadnorthshoubra.views.activities.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".views.activities.EnterNewMember"
+            android:label="@string/title_activity_enter_new_member"
+            android:parentActivityName=".views.activities.HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.samir.andrew.eftkadnorthshoubra.views.activities.HomeActivity" />
+        </activity>
+    </application>
+
+</manifest>

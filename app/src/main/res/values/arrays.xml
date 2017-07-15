@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="segment_control_list_map">
+        <item>الكل</item>
+        <item>مقدم خدمه</item>
+        <item>قروب</item>
+    </string-array>
+
+    <string-array name="price_array_strings">
+        <item>بالمحاضرة</item>
+        <item>بالساعة</item>
+    </string-array>
+
+    <string-array name="lecture_place_array_strings">
+        <item>لا يهم</item>
+        <item>المنزل</item>
+        <item>خارج</item>
+    </string-array>
+
+    <string-array name="segment_gender_any">
+        <item>لا يهم</item>
+        <item>ذكر</item>
+        <item>انثى</item>
+
+    </string-array>
+
+    <string-array name="segment_control_provider_type">
+        <item>جروبات</item>
+        <item>خدمات فردية</item>
+    </string-array>
+
+
+    <string-array name="segment_gender">
+        <item>ذكر</item>
+        <item>انثى</item>
+
+    </string-array>
+
+    <string-array name="iam_work">
+        <item>رجل أعمال</item>
+        <item>موظف</item>
+        <item>طالب</item>
+    </string-array>
+
+
+    <string-array name="segment_register">
+        <item>أنا مستخدم</item>
+        <item>أنا مقدم خدمة</item>
+    </string-array>
+
+    <string-array name="price_array_strings_talking">
+        <item>مفاهمة</item>
+        <item>بالمحاضرة</item>
+        <item>بالساعة</item>
+    </string-array>
+
+    <string-array name="pay_method_with_talking">
+        <item>لا يهم</item>
+        <item>فيزا</item>
+        <item>كاش</item>
+    </string-array>
+
+    <string-array name="pay_method">
+        <item>فيزا</item>
+        <item>كاش</item>
+    </string-array>
+    <string-array name="segment_my_services">
+        <item>جروبات</item>
+        <item>خدمات فردية</item>
+    </string-array>
+    <string-array name="segment_my_requsted_orders">
+        <item>طلبات بدون مقدم خدمة</item>
+        <item>طلبات مطلوبة</item>
+    </string-array>
+    <string-array name="segment_my_requsted_orders_filter">
+        <item>الكل</item>
+        <item>مقدم خدمة</item>
+        <item>قروب</item>
+    </string-array>
+
+</resources>
