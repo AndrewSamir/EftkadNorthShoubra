@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <!--drpodown-->
+    <LinearLayout
+        android:id="@+id/linearDropdownChurch"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/viewHeight"
+        android:background="@drawable/dropdown_background"
+        android:layoutDirection="rtl"
+        android:orientation="horizontal"
+        android:padding="@dimen/_5sdp"
+        android:weightSum="5">
+
+
+
+        <TextView
+            android:id="@+id/textDropdownChurch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="4.5"
+            android:gravity="right"
+            android:text="@string/choose_church"
+            android:textColor="@color/colorInactiveField"
+            android:textSize="@dimen/textSize" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:gravity="left">
+
+            <ImageView
+                android:id="@+id/arrowDropdownChurch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:src="@drawable/ic_action_keyboard_arrow_down"
+                android:tint="@color/colorInactiveField" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

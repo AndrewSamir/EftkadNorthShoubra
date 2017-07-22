@@ -1,11 +1,316 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="@dimen/activityMargin"
+    android:orientation="vertical"
+    android:scrollbars="none"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.samir.andrew.eftkadnorthshoubra.views.activities.EnterNewStreet"
     tools:showIn="@layout/activity_enter_new_street">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginBottom">
+
+            <include layout="@layout/dropdown_church" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginBottom">
+
+            <include layout="@layout/dropdown_area" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginBottom">
+
+            <include layout="@layout/dropdown_father" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edtُEnterNewStreetName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:hint="@string/street_name"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <EditText
+            android:id="@+id/edtُEnterNewStreetSaint"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:hint="@string/street_saint"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="الارقام الزوجية"
+            android:textColor="@color/colorInactiveField"
+            android:textSize="@dimen/textSize" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:layoutDirection="rtl"
+            android:orientation="horizontal"
+            android:weightSum="6">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/viewHeight"
+                android:layout_marginBottom="@dimen/marginBottom"
+                android:layout_weight="3"
+                android:layoutDirection="rtl"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+                <LinearLayout
+                    android:id="@+id/imgCalendarFrom"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:layout_weight="2"
+                    android:background="@drawable/button_background_accent"
+                    android:gravity="center"
+
+                    android:layoutDirection="rtl">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/from"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvEvenNumbersFrom"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:layout_weight="3"
+                    android:background="@drawable/dropdown_background"
+                    android:gravity="center"
+                    android:hint="@string/from"
+
+                    android:padding="@dimen/_5sdp"
+
+                    android:textSize="@dimen/textSize" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/viewHeight"
+                android:layout_marginBottom="@dimen/marginBottom"
+                android:layout_weight="3"
+                android:layoutDirection="rtl"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+                <LinearLayout
+                    android:id="@+id/imgCalendarTo"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:layout_weight="2"
+                    android:background="@drawable/button_background_accent"
+                    android:gravity="center"
+
+                    android:layoutDirection="rtl">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="wrap_content"
+                        android:text="@string/to"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvEvenNumbersTo"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:layout_weight="3"
+
+                    android:background="@drawable/dropdown_background"
+                    android:gravity="center"
+                    android:hint="@string/to"
+                    android:padding="@dimen/_5sdp"
+
+                    android:textSize="@dimen/textSize" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="@string/odd_numbers"
+            android:textColor="@color/colorInactiveField"
+            android:textSize="@dimen/textSize" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:layoutDirection="rtl"
+            android:orientation="horizontal"
+            android:weightSum="6">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/viewHeight"
+                android:layout_marginBottom="@dimen/marginBottom"
+                android:layout_weight="3"
+                android:layoutDirection="rtl"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:layout_weight="2"
+                    android:background="@drawable/button_background_accent"
+                    android:gravity="center"
+
+                    android:layoutDirection="rtl">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/from"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvOddNumbersFrom"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:layout_weight="3"
+                    android:background="@drawable/dropdown_background"
+                    android:gravity="center"
+                    android:hint="@string/from"
+
+                    android:padding="@dimen/_5sdp"
+
+                    android:textSize="@dimen/textSize" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/viewHeight"
+                android:layout_marginBottom="@dimen/marginBottom"
+                android:layout_weight="3"
+                android:layoutDirection="rtl"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:layout_weight="2"
+                    android:background="@drawable/button_background_accent"
+                    android:gravity="center"
+
+                    android:layoutDirection="rtl">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="wrap_content"
+                        android:text="@string/to"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvOddNumbersTo"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:layout_weight="3"
+
+                    android:background="@drawable/dropdown_background"
+                    android:gravity="center"
+                    android:hint="@string/to"
+                    android:padding="@dimen/_5sdp"
+
+                    android:textSize="@dimen/textSize" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edtEnterNewStreetNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:gravity="top"
+            android:hint="@string/notes"
+            android:minHeight="@dimen/_100sdp"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <Button
+            android:id="@+id/btnEnterNewStreetAdd"
+            android:layout_width="match_parent"
+
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/button_background_accent"
+            android:padding="@dimen/_5sdp"
+            android:text="@string/add_street"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/textSize" />
+
+    </LinearLayout>
+</ScrollView>

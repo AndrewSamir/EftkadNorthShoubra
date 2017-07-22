@@ -86,7 +86,7 @@
                 android:value="com.samir.andrew.eftkadnorthshoubra.views.activities.HomeActivity" />
         </activity>
         <activity
-            android:name=".views.activities.EnterNewParent"
+            android:name=".views.activities.EnterNewRelationship"
             android:label="@string/title_activity_enter_new_parent"
             android:parentActivityName=".views.activities.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">

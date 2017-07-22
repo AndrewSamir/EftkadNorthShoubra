@@ -1,9 +1,7 @@
 package com.samir.andrew.eftkadnorthshoubra.views.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -25,14 +23,7 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -82,17 +73,31 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_enter_fathers) {
+            startActivity(new Intent(this, EnterFather.class));
+        } else if (id == R.id.nav_enter_new_area) {
+            startActivity(new Intent(this, EnterNewArea.class));
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_enter_new_job) {
+            startActivity(new Intent(this, EnterNewJob.class));
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_enter_meetings) {
+            startActivity(new Intent(this, EnterNewMeeting.class));
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_enter_new_member) {
+            startActivity(new Intent(this, EnterNewMember.class));
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_enter_new_parent) {
+            startActivity(new Intent(this, EnterNewRelationship.class));
+
+        } else if (id == R.id.nav_enter_new_street) {
+            startActivity(new Intent(this, EnterNewStreet.class));
+
+        } else if (id == R.id.nav_enter_new_user) {
+            startActivity(new Intent(this, EnterNewUser.class));
+
+        } else if (id == R.id.nav_enter_new_qualification) {
+            startActivity(new Intent(this, EnterQualifaction.class));
 
         }
 

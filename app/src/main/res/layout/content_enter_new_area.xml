@@ -1,11 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="@dimen/activityMargin"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.samir.andrew.eftkadnorthshoubra.views.activities.EnterNewArea"
     tools:showIn="@layout/activity_enter_new_area">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/marginBottom">
+
+        <include layout="@layout/dropdown_church" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/edtEnterAreaArea"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/viewHeight"
+        android:layout_marginBottom="@dimen/marginBottom"
+        android:background="@drawable/dropdown_background"
+        android:hint="@string/area"
+        android:padding="@dimen/_5sdp"
+        android:textSize="@dimen/textSize" />
+
+    <Button
+        android:id="@+id/btnEnterAreaAdd"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/viewHeight"
+        android:layout_marginBottom="@dimen/marginBottom"
+        android:layout_marginTop="@dimen/marginTop"
+        android:background="@drawable/button_background_accent"
+        android:padding="@dimen/_5sdp"
+        android:text="@string/add_area"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/textSize" />
+
+</LinearLayout>

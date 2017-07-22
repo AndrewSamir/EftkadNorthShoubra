@@ -16,7 +16,7 @@ public class SplashScreen extends AppCompatActivity {
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_splash_screen);
 
-        startActivity(new Intent(this, Login.class));
+        startActivity(new Intent(this, HomeActivity.class));
 
 
     }

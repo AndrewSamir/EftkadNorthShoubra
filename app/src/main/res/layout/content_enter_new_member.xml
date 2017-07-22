@@ -1,11 +1,267 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="@dimen/activityMargin"
+    android:orientation="vertical"
+    android:scrollbars="none"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.samir.andrew.eftkadnorthshoubra.views.activities.EnterNewMember"
     tools:showIn="@layout/activity_enter_new_member">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginBottom">
+
+            <include layout="@layout/dropdown_father" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/edtEnterNewMemberBaptismDate"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:drawablePadding="@dimen/_7sdp"
+            android:drawableRight="@drawable/ic_action_mail"
+            android:gravity="right|center_vertical"
+            android:hint="تاريخ المعمودية"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <TextView
+            android:id="@+id/edtEnterNewMemberBirthdate"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:drawablePadding="@dimen/_7sdp"
+            android:drawableRight="@drawable/ic_action_mail"
+            android:gravity="right|center_vertical"
+            android:hint="تاريخ الميلاد"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:layoutDirection="rtl"
+            android:orientation="horizontal"
+
+            android:weightSum="2">
+
+            <EditText
+                android:id="@+id/edtEnterNewMemberFloor"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/viewHeight"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:background="@drawable/dropdown_background"
+                android:hint="الدور"
+                android:padding="@dimen/_5sdp"
+                android:textSize="@dimen/textSize" />
+
+            <EditText
+                android:id="@+id/edtEnterNewMemberFlat"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/viewHeight"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:background="@drawable/dropdown_background"
+                android:hint="الشقة"
+                android:padding="@dimen/_5sdp"
+                android:textSize="@dimen/textSize" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edtEnterNewMemberBlockNumber"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:hint="رقم العمارة"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <EditText
+            android:id="@+id/edtEnterNewMemberRelationshipInFamily"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:hint="@string/relationship"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <EditText
+            android:id="@+id/edtEnterNewMemberFacebook"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:hint="Facebook"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <EditText
+            android:id="@+id/edtEnterNewMemberGraduationYear"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:hint="سنة التخرج"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <EditText
+            android:id="@+id/edtEnterNewMemberNationalId"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:hint="الرقم القومى"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginBottom">
+
+            <include layout="@layout/dropdown_job" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edtEnterNewMemberMail"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:hint="البريد الإليكترونى"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <TextView
+            android:id="@+id/edtEnterNewMemberMiraggeDate"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:drawablePadding="@dimen/_7sdp"
+            android:drawableRight="@drawable/ic_action_mail"
+            android:gravity="right|center_vertical"
+            android:hint="تاريخ الزواج"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <EditText
+            android:id="@+id/edtEnterNewMemberMobile_1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:hint="@string/mobile_1"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <EditText
+            android:id="@+id/edtEnterNewMemberMobile_2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:hint="@string/mobile_2"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <EditText
+            android:id="@+id/edtEnterNewMemberName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:hint="@string/name"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <EditText
+            android:id="@+id/edtEnterNewMemberPhone_1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:hint="تليفون ارضى 1"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <EditText
+            android:id="@+id/edtEnterNewMemberPhone_2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:hint="تليفون ارضى 2"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <EditText
+            android:id="@+id/edtEnterNewMemberSocialStatus"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:hint="الحالة الاجتماعية"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginBottom">
+
+            <include layout="@layout/dropdown_father" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edtEnterNewMemberNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:gravity="top"
+            android:hint="@string/notes"
+            android:minHeight="@dimen/_100sdp"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginBottom">
+
+            <include layout="@layout/xml_member_meetings" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnEnterNewMemberAdd"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/button_background_accent"
+            android:padding="@dimen/_5sdp"
+            android:text="أضف عضو"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/textSize" />
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

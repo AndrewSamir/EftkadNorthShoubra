@@ -6,10 +6,50 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.samir.andrew.eftkadnorthshoubra.R;
+import com.samir.andrew.eftkadnorthshoubra.interfaces.InterfaceAddDataToFirebase;
+import com.samir.andrew.eftkadnorthshoubra.interfaces.InterfaceDailogClicked;
+import com.samir.andrew.eftkadnorthshoubra.models.newArea.ModelNewArea;
+import com.samir.andrew.eftkadnorthshoubra.models.newFather.ModelNewFather;
+import com.samir.andrew.eftkadnorthshoubra.utlities.DataEnum;
+import com.samir.andrew.eftkadnorthshoubra.utlities.HandleAddDataToFirebase;
+import com.samir.andrew.eftkadnorthshoubra.utlities.HandleListDialog;
+import com.sdsmdg.tastytoast.TastyToast;
 
-public class EnterFather extends AppCompatActivity {
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+public class EnterFather extends AppCompatActivity implements InterfaceDailogClicked, InterfaceAddDataToFirebase {
+
+    //dropdown father
+    @Bind(R.id.textDropdownChurch)
+    TextView textDropdownChurch;
+
+    @OnClick(R.id.linearDropdownChurch)
+    public void onClicklinearDropdownChurch() {
+        HandleListDialog.getInstance(this).callGetChurchs(DataEnum.callGetChurchs.name());
+    }
+
+    //=====================================================================//
+
+    @Bind(R.id.edtEnterFatherName)
+    EditText edtEnterFatherName;
+
+    @Bind(R.id.edtEnterFatherMobile_1)
+    EditText edtEnterFatherMobile_1;
+
+    @Bind(R.id.edtEnterFatherMobile_2)
+    EditText edtEnterFatherMobile_2;
+
+    @OnClick(R.id.btnEnterFatherAdd)
+    public void onClickbtnEnterFatherAdd() {
+        addNewFather();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,15 +58,49 @@ public class EnterFather extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        ButterKnife.bind(this);
+
+        HandleListDialog.getInstance(this).setClickDialogListener(this);
+        HandleAddDataToFirebase.getInstance(this).setClickDialogListener(this);
     }
+
+    @Override
+    public void onClickDialog(String name, String flag) {
+
+        if (flag.equals(DataEnum.callGetChurchs.name())) {
+
+            textDropdownChurch.setText(name);
+        }
+    }
+
+    @Override
+    public void onDataAddedSuccess(String flag) {
+        TastyToast.makeText(this, getString(R.string.father_added), TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
+    }
+
+    @Override
+    public void onDataAddedFailed(String flag) {
+        TastyToast.makeText(this, getString(R.string.connection_error), TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+    }
+
+    @Override
+    public void onDataAddedRepeated(String flag) {
+    }
+
+    private void addNewFather() {
+
+        ModelNewFather modelNewFather = new ModelNewFather();
+        modelNewFather.setFather_consercation_date("e");
+        modelNewFather.setFather_name(edtEnterFatherName.getText().toString());
+        modelNewFather.setFather_mobile_1(edtEnterFatherMobile_1.getText().toString());
+        modelNewFather.setFather_mobile_2(edtEnterFatherMobile_2.getText().toString());
+
+        HandleAddDataToFirebase.getInstance(this).callAddFather(DataEnum.callAddFather.name(),
+                textDropdownChurch.getText().toString(),
+                modelNewFather);
+    }
+
 
 }

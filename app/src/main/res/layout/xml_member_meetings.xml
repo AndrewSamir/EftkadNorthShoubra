@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+
+    android:padding="@dimen/activityMargin">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/marginBottom"
+        android:gravity="right"
+        android:text="@string/meetings"
+        android:textColor="@color/colorInactiveField"
+        android:textSize="@dimen/textSize" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvAddGroupMembers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="@dimen/marginBottom" />
+
+    <Button
+        android:id="@+id/btnAddMemberMeeting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/marginBottom"
+        android:background="@drawable/button_background_primary"
+        android:padding="@dimen/_5sdp"
+        android:text="@string/add_meeting"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/textSize" />
+
+</LinearLayout>

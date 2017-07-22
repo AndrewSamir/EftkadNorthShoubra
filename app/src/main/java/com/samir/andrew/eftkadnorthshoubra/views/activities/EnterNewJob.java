@@ -5,11 +5,34 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 
 import com.samir.andrew.eftkadnorthshoubra.R;
+import com.samir.andrew.eftkadnorthshoubra.interfaces.InterfaceAddDataToFirebase;
+import com.samir.andrew.eftkadnorthshoubra.interfaces.InterfaceDailogClicked;
+import com.samir.andrew.eftkadnorthshoubra.utlities.DataEnum;
+import com.samir.andrew.eftkadnorthshoubra.utlities.HandleAddDataToFirebase;
+import com.samir.andrew.eftkadnorthshoubra.utlities.HandleListDialog;
+import com.sdsmdg.tastytoast.TastyToast;
 
-public class EnterNewJob extends AppCompatActivity {
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+public class EnterNewJob extends AppCompatActivity implements InterfaceAddDataToFirebase {
+
+    @Bind(R.id.edtEnterJobJob)
+    EditText edtEnterJobJob;
+
+    @OnClick(R.id.btnEnterJob)
+    public void onClickbtnEnterJob() {
+        // TODO submit data to server...
+
+        HandleAddDataToFirebase.getInstance(EnterNewJob.this).callAddJob(DataEnum.callAddJob.name(), edtEnterJobJob.getText().toString());
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,16 +40,42 @@ public class EnterNewJob extends AppCompatActivity {
         setContentView(R.layout.activity_enter_new_job);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        ButterKnife.bind(this);
+
+        HandleAddDataToFirebase.getInstance(this).setClickDialogListener(this);
+
     }
 
+
+    @Override
+    public void onDataAddedSuccess(String flag) {
+
+        if (flag.equals(DataEnum.callAddJob.name())) {
+
+            TastyToast.makeText(this, getString(R.string.job_added), TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
+            onBackPressed();
+        }
+    }
+
+    @Override
+    public void onDataAddedFailed(String flag) {
+
+        if (flag.equals(DataEnum.callAddJob.name())) {
+
+            TastyToast.makeText(this, getString(R.string.connection_error), TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+
+        }
+
+    }
+
+    @Override
+    public void onDataAddedRepeated(String flag) {
+        if (flag.equals(DataEnum.callAddJob.name())) {
+
+            TastyToast.makeText(this, getString(R.string.job_repeated), TastyToast.LENGTH_SHORT, TastyToast.WARNING);
+
+        }
+    }
 }
