@@ -43,6 +43,7 @@
         <activity
             android:name=".views.activities.EnterNewStreet"
             android:label="@string/title_activity_enter_new_street"
+            android:windowSoftInputMode="stateAlwaysVisible"
             android:parentActivityName=".views.activities.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -61,6 +62,7 @@
         <activity
             android:name=".views.activities.EnterFather"
             android:label="@string/title_activity_enter_father"
+            android:windowSoftInputMode="adjustResize"
             android:parentActivityName=".views.activities.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -70,6 +72,8 @@
         <activity
             android:name=".views.activities.EnterNewJob"
             android:label="@string/title_activity_enter_new_job"
+            android:windowSoftInputMode="adjustResize"
+
             android:parentActivityName=".views.activities.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -80,6 +84,8 @@
             android:name=".views.activities.EnterQualifaction"
             android:label="@string/title_activity_enter_qualifaction"
             android:parentActivityName=".views.activities.HomeActivity"
+            android:windowSoftInputMode="adjustResize"
+
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -89,6 +95,8 @@
             android:name=".views.activities.EnterNewRelationship"
             android:label="@string/title_activity_enter_new_parent"
             android:parentActivityName=".views.activities.HomeActivity"
+            android:windowSoftInputMode="adjustResize"
+
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

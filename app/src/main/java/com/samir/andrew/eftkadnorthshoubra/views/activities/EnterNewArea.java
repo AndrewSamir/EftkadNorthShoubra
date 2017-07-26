@@ -15,6 +15,7 @@ import com.samir.andrew.eftkadnorthshoubra.interfaces.InterfaceDailogClicked;
 import com.samir.andrew.eftkadnorthshoubra.utlities.DataEnum;
 import com.samir.andrew.eftkadnorthshoubra.utlities.HandleAddDataToFirebase;
 import com.samir.andrew.eftkadnorthshoubra.utlities.HandleListDialog;
+import com.samir.andrew.eftkadnorthshoubra.utlities.HelpMe;
 import com.sdsmdg.tastytoast.TastyToast;
 
 import butterknife.Bind;
@@ -57,6 +58,7 @@ public class EnterNewArea extends AppCompatActivity implements InterfaceDailogCl
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ButterKnife.bind(this);
+        HelpMe.getInstance(this).hideKeyBoard(this);
 
         HandleListDialog.getInstance(this).setClickDialogListener(this);
         HandleAddDataToFirebase.getInstance(this).setClickDialogListener(this);
@@ -66,7 +68,7 @@ public class EnterNewArea extends AppCompatActivity implements InterfaceDailogCl
     @Override
     public void onClickDialog(String name, String flag) {
 
-        if (flag.equals(DataEnum.callGetChurchs)) {
+        if (flag.equals(DataEnum.callGetChurchs.name())) {
 
             textDropdownChurch.setText(name);
         }
@@ -75,6 +77,7 @@ public class EnterNewArea extends AppCompatActivity implements InterfaceDailogCl
     @Override
     public void onDataAddedSuccess(String flag) {
         TastyToast.makeText(this, getString(R.string.area_added), TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
+        onBackPressed();
     }
 
     @Override

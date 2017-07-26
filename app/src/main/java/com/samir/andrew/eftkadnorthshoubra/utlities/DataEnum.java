@@ -5,5 +5,5 @@ package com.samir.andrew.eftkadnorthshoubra.utlities;
  */
 
 public enum DataEnum {
-    callGetQualifications, myChurch, callGetChurchs, callGetAreas, callGetFathers, callGetMettings, callAddHob, callAddJob, callAddArea, callAddFather, callGetJobs
+    callGetQualifications, myChurch, callGetChurchs, callGetAreas, callGetFathers, callGetMettings, callAddHob, callAddJob, callAddArea, callAddFather, callAddStreet, callAddMeeting, callGetStreets, callGetJobs
 }

@@ -1,18 +1,18 @@
 package com.samir.andrew.eftkadnorthshoubra.views.activities;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.samir.andrew.eftkadnorthshoubra.R;
 import com.samir.andrew.eftkadnorthshoubra.interfaces.InterfaceDailogClicked;
+import com.samir.andrew.eftkadnorthshoubra.models.newStreet.streetData;
 import com.samir.andrew.eftkadnorthshoubra.utlities.DataEnum;
+import com.samir.andrew.eftkadnorthshoubra.utlities.HandleAddDataToFirebase;
 import com.samir.andrew.eftkadnorthshoubra.utlities.HandleListDialog;
+import com.samir.andrew.eftkadnorthshoubra.utlities.HelpMe;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -26,6 +26,7 @@ public class EnterNewStreet extends AppCompatActivity implements InterfaceDailog
 
     @OnClick(R.id.linearDropdownChurch)
     public void onClicklinearDropdownChurch() {
+        textDropdownChurch.setError(null);
         HandleListDialog.getInstance(this).callGetChurchs(DataEnum.callGetChurchs.name());
     }
 
@@ -38,8 +39,11 @@ public class EnterNewStreet extends AppCompatActivity implements InterfaceDailog
     public void onClicklinearDropdownArea() {
 
         if (!textDropdownChurch.getText().toString().equals(getString(R.string.choose_church))) {
-            HandleListDialog.getInstance(this).callGetChurchs(DataEnum.callGetAreas.name());
+            textDropdownArea.setError(null);
+            HandleListDialog.getInstance(this).callGetAreas(DataEnum.callGetAreas.name(), textDropdownChurch.getText().toString());
 
+        } else {
+            textDropdownChurch.setError(getString(R.string.required_field));
         }
     }
 //=============================================================================================//
@@ -51,7 +55,10 @@ public class EnterNewStreet extends AppCompatActivity implements InterfaceDailog
     @OnClick(R.id.linearDropdownFather)
     public void onClicklinearDropdownFather() {
         if (!textDropdownChurch.getText().toString().equals(getString(R.string.choose_church))) {
-            HandleListDialog.getInstance(this).callGetChurchs(DataEnum.callGetFathers.name());
+            textDropdownFather.setError(null);
+            HandleListDialog.getInstance(this).callGetFathers(DataEnum.callGetFathers.name(), textDropdownChurch.getText().toString());
+        } else {
+            textDropdownChurch.setError(getString(R.string.required_field));
         }
     }
 //=============================================================================================//
@@ -62,33 +69,28 @@ public class EnterNewStreet extends AppCompatActivity implements InterfaceDailog
     @Bind(R.id.edtُEnterNewStreetSaint)
     EditText edtُEnterNewStreetSaint;
 
-    @OnClick(R.id.tvEvenNumbersFrom)
-    public void onClicktvEvenNumbersFrom() {
-        // TODO submit data to server...
-    }
 
-    @OnClick(R.id.tvEvenNumbersTo)
-    public void onClicktvEvenNumbersTo() {
-        // TODO submit data to server...
-    }
+    @Bind(R.id.tvEvenNumbersFrom)
+    EditText tvEvenNumbersFrom;
+    @Bind(R.id.tvEvenNumbersTo)
+    EditText tvEvenNumbersTo;
+    @Bind(R.id.tvOddNumbersFrom)
+    EditText tvOddNumbersFrom;
+    @Bind(R.id.tvOddNumbersTo)
+    EditText tvOddNumbersTo;
 
-    @OnClick(R.id.tvOddNumbersFrom)
-    public void onClicktvOddNumbersFrom() {
-        // TODO submit data to server...
-    }
-
-    @OnClick(R.id.tvOddNumbersTo)
-    public void onClicktvOddNumbersTo() {
-        // TODO submit data to server...
-    }
 
     @Bind(R.id.edtEnterNewStreetNotes)
     EditText edtEnterNewStreetNotes;
 
     @OnClick(R.id.btnEnterNewStreetAdd)
     public void onClickbtnEnterNewStreetAdd() {
-        // TODO submit data to server...
+        if (validate()) {
+            callSetStreetData();
+        }
     }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +102,7 @@ public class EnterNewStreet extends AppCompatActivity implements InterfaceDailog
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ButterKnife.bind(this);
+        HelpMe.getInstance(this).hideKeyBoard(this);
 
         HandleListDialog.getInstance(this).setClickDialogListener(this);
 
@@ -108,20 +111,97 @@ public class EnterNewStreet extends AppCompatActivity implements InterfaceDailog
     @Override
     public void onClickDialog(String name, String flag) {
 
-        if (flag.equals(DataEnum.callGetChurchs)) {
+        if (flag.equals(DataEnum.callGetChurchs.name())) {
 
             textDropdownChurch.setText(name);
             textDropdownArea.setText(getString(R.string.choose_area));
             textDropdownFather.setText(getString(R.string.choose_Father));
 
-        } else if (flag.equals(DataEnum.callGetAreas)) {
+        } else if (flag.equals(DataEnum.callGetAreas.name())) {
 
             textDropdownArea.setText(name);
 
-        } else if (flag.equals(DataEnum.callGetFathers)) {
+        } else if (flag.equals(DataEnum.callGetFathers.name())) {
 
             textDropdownFather.setText(name);
         }
+    }
 
+    private void callSetStreetData() {
+
+        streetData streetData = new streetData();
+        streetData.setStreet_area(textDropdownArea.getText().toString());
+        streetData.setStreet_name(edtُEnterNewStreetName.getText().toString());
+
+        if (edtُEnterNewStreetSaint.getText().toString().length() > 0) {
+            streetData.setStreet_saint(edtُEnterNewStreetSaint.getText().toString());
+        } else {
+            streetData.setStreet_saint("e");
+        }
+
+        if (tvEvenNumbersFrom.getText().toString().length() > 0) {
+            streetData.setStreet_start_even(tvEvenNumbersFrom.getText().toString());
+        } else {
+            streetData.setStreet_start_even("e");
+        }
+
+        if (tvEvenNumbersTo.getText().toString().length() > 0) {
+            streetData.setStreet_finish_even(tvEvenNumbersTo.getText().toString());
+        } else {
+            streetData.setStreet_finish_even("e");
+        }
+
+        if (tvOddNumbersFrom.getText().toString().length() > 0) {
+            streetData.setStreet_start_odd(tvOddNumbersFrom.getText().toString());
+        } else {
+            streetData.setStreet_start_odd("e");
+        }
+
+        if (tvOddNumbersTo.getText().toString().length() > 0) {
+            streetData.setStreet_finish_odd(tvOddNumbersTo.getText().toString());
+        } else {
+            streetData.setStreet_finish_odd("e");
+        }
+
+        if (edtEnterNewStreetNotes.getText().toString().length() > 0) {
+            streetData.setStreet_notes(edtEnterNewStreetNotes.getText().toString());
+        } else {
+            streetData.setStreet_notes("e");
+        }
+
+        HandleAddDataToFirebase.getInstance(this).callAddStreet(DataEnum.callAddStreet.name(),
+                textDropdownChurch.getText().toString(),
+                textDropdownArea.getText().toString(),
+                edtُEnterNewStreetName.getText().toString(),
+                streetData);
+    }
+
+    private boolean validate() {
+
+        boolean valid = true;
+
+        if (edtُEnterNewStreetName.getText().toString().length() == 0) {
+            valid = false;
+            edtُEnterNewStreetName.setFocusable(true);
+            edtُEnterNewStreetName.requestFocus();
+            edtُEnterNewStreetName.setError(getString(R.string.required_field));
+        }
+        if (textDropdownArea.getText().toString().equals(getString(R.string.choose_area))) {
+
+            valid = false;
+            textDropdownArea.setFocusable(true);
+            textDropdownArea.requestFocus();
+            textDropdownArea.setError(getString(R.string.required_field));
+        }
+        if (textDropdownChurch.getText().toString().equals(getString(R.string.choose_church))) {
+
+            valid = false;
+            textDropdownChurch.setFocusable(true);
+            textDropdownChurch.requestFocus();
+            textDropdownChurch.setError(getString(R.string.required_field));
+
+        }
+
+        return valid;
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,52 +13,57 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/marginBottom">
+        android:orientation="vertical">
 
-        <include layout="@layout/dropdown_church" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginBottom">
+
+            <include layout="@layout/dropdown_church" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edtEnterFatherName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:hint="@string/name"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <EditText
+            android:id="@+id/edtEnterFatherMobile_1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:hint="@string/mobile_1"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <EditText
+            android:id="@+id/edtEnterFatherMobile_2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:hint="@string/mobile_2"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <Button
+            android:id="@+id/btnEnterFatherAdd"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:layout_marginTop="@dimen/marginTop"
+            android:background="@drawable/button_background_accent"
+            android:padding="@dimen/_5sdp"
+            android:text="@string/add_father"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/textSize" />
+
     </LinearLayout>
-
-    <EditText
-        android:id="@+id/edtEnterFatherName"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/viewHeight"
-        android:layout_marginBottom="@dimen/marginBottom"
-        android:background="@drawable/dropdown_background"
-        android:hint="@string/name"
-        android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/textSize" />
-
-    <EditText
-        android:id="@+id/edtEnterFatherMobile_1"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/viewHeight"
-        android:layout_marginBottom="@dimen/marginBottom"
-        android:background="@drawable/dropdown_background"
-        android:hint="@string/mobile_1"
-        android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/textSize" />
-
-    <EditText
-        android:id="@+id/edtEnterFatherMobile_2"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/viewHeight"
-        android:layout_marginBottom="@dimen/marginBottom"
-        android:background="@drawable/dropdown_background"
-        android:hint="@string/mobile_2"
-        android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/textSize" />
-
-    <Button
-        android:id="@+id/btnEnterFatherAdd"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/viewHeight"
-        android:layout_marginBottom="@dimen/marginBottom"
-        android:layout_marginTop="@dimen/marginTop"
-        android:background="@drawable/button_background_accent"
-        android:padding="@dimen/_5sdp"
-        android:text="@string/add_father"
-        android:textColor="@color/colorWhite"
-        android:textSize="@dimen/textSize" />
-
-
-</LinearLayout>
+</android.support.v4.widget.NestedScrollView>

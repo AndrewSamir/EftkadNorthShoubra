@@ -15,6 +15,7 @@ import com.samir.andrew.eftkadnorthshoubra.interfaces.InterfaceDailogClicked;
 import com.samir.andrew.eftkadnorthshoubra.utlities.DataEnum;
 import com.samir.andrew.eftkadnorthshoubra.utlities.HandleAddDataToFirebase;
 import com.samir.andrew.eftkadnorthshoubra.utlities.HandleListDialog;
+import com.samir.andrew.eftkadnorthshoubra.utlities.HelpMe;
 import com.sdsmdg.tastytoast.TastyToast;
 
 import butterknife.Bind;
@@ -45,6 +46,7 @@ public class EnterNewJob extends AppCompatActivity implements InterfaceAddDataTo
         ButterKnife.bind(this);
 
         HandleAddDataToFirebase.getInstance(this).setClickDialogListener(this);
+        HelpMe.getInstance(this).hideKeyBoard(this);
 
     }
 

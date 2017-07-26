@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.widget.EditText;
 
 import com.samir.andrew.eftkadnorthshoubra.R;
+import com.samir.andrew.eftkadnorthshoubra.utlities.HelpMe;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -29,6 +30,7 @@ public class EnterNewRelationship extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        HelpMe.getInstance(this).hideKeyBoard(this);
 
         ButterKnife.bind(this);
     }

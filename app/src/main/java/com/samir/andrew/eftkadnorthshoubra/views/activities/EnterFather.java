@@ -17,6 +17,7 @@ import com.samir.andrew.eftkadnorthshoubra.models.newFather.ModelNewFather;
 import com.samir.andrew.eftkadnorthshoubra.utlities.DataEnum;
 import com.samir.andrew.eftkadnorthshoubra.utlities.HandleAddDataToFirebase;
 import com.samir.andrew.eftkadnorthshoubra.utlities.HandleListDialog;
+import com.samir.andrew.eftkadnorthshoubra.utlities.HelpMe;
 import com.sdsmdg.tastytoast.TastyToast;
 
 import butterknife.Bind;
@@ -31,6 +32,7 @@ public class EnterFather extends AppCompatActivity implements InterfaceDailogCli
 
     @OnClick(R.id.linearDropdownChurch)
     public void onClicklinearDropdownChurch() {
+        textDropdownChurch.setError(null);
         HandleListDialog.getInstance(this).callGetChurchs(DataEnum.callGetChurchs.name());
     }
 
@@ -47,7 +49,8 @@ public class EnterFather extends AppCompatActivity implements InterfaceDailogCli
 
     @OnClick(R.id.btnEnterFatherAdd)
     public void onClickbtnEnterFatherAdd() {
-        addNewFather();
+        if (validate())
+            addNewFather();
     }
 
 
@@ -61,6 +64,7 @@ public class EnterFather extends AppCompatActivity implements InterfaceDailogCli
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ButterKnife.bind(this);
+        HelpMe.getInstance(this).hideKeyBoard(this);
 
         HandleListDialog.getInstance(this).setClickDialogListener(this);
         HandleAddDataToFirebase.getInstance(this).setClickDialogListener(this);
@@ -100,6 +104,26 @@ public class EnterFather extends AppCompatActivity implements InterfaceDailogCli
         HandleAddDataToFirebase.getInstance(this).callAddFather(DataEnum.callAddFather.name(),
                 textDropdownChurch.getText().toString(),
                 modelNewFather);
+    }
+
+    private boolean validate() {
+
+        boolean valid = true;
+
+        if (edtEnterFatherName.getText().toString().length() == 0) {
+            valid = false;
+            edtEnterFatherName.setFocusable(true);
+            edtEnterFatherName.requestFocus();
+            edtEnterFatherName.setError(getString(R.string.required_field));
+        }
+        if (textDropdownChurch.getText().toString().equals(getString(R.string.choose_church))) {
+            valid = false;
+            textDropdownChurch.setFocusable(true);
+            textDropdownChurch.requestFocus();
+            textDropdownChurch.setError(getString(R.string.required_field));
+        }
+
+        return valid;
     }
 
 

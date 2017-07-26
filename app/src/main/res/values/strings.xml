@@ -23,7 +23,7 @@
     <string name="title_activity_enter_new_street">شارع جديد</string>
     <string name="title_activity_enter_new_meeting">اضافة اجتماع</string>
     <string name="title_activity_enter_father">اضافة أب كاهن</string>
-    <string name="title_activity_enter_new_job">وظيفة حديدة</string>
+    <string name="title_activity_enter_new_job">وظيفة جديدة</string>
     <string name="title_activity_enter_qualifaction">مؤهل جديد</string>
     <string name="title_activity_enter_new_parent">صلة قرابة جديدة</string>
     <string name="title_activity_enter_new_user">مستخدم جديد</string>
@@ -74,5 +74,10 @@
     <string name="job_repeated">هذه الوظيفه موجوده بالفعل</string>
     <string name="father_added">تم إضافة الاب الكاهن</string>
     <string name="fire_churchs">churchs</string>
+    <string name="required_field">حقل مطلوب</string>
+    <string name="fire_father_name">father_name</string>
+    <string name="fire_street_data">streetData</string>
+    <string name="fire_members">members</string>
+    <string name="choose_Street">أختر شارع ...</string>
 
 </resources>

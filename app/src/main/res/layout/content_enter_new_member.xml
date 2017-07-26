@@ -16,37 +16,47 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <EditText
+            android:id="@+id/edtEnterNewMemberName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:hint="@string/name"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/marginBottom">
 
-            <include layout="@layout/dropdown_father" />
+            <include layout="@layout/dropdown_church" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/edtEnterNewMemberBaptismDate"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/viewHeight"
-            android:layout_marginBottom="@dimen/marginBottom"
-            android:background="@drawable/dropdown_background"
-            android:drawablePadding="@dimen/_7sdp"
-            android:drawableRight="@drawable/ic_action_mail"
-            android:gravity="right|center_vertical"
-            android:hint="تاريخ المعمودية"
-            android:padding="@dimen/_5sdp"
-            android:textSize="@dimen/textSize" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginBottom">
 
-        <TextView
-            android:id="@+id/edtEnterNewMemberBirthdate"
+            <include layout="@layout/dropdown_area" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginBottom">
+
+            <include layout="@layout/dropdown_street" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edtEnterNewMemberBlockNumber"
             android:layout_width="match_parent"
             android:layout_height="@dimen/viewHeight"
             android:layout_marginBottom="@dimen/marginBottom"
             android:background="@drawable/dropdown_background"
-            android:drawablePadding="@dimen/_7sdp"
-            android:drawableRight="@drawable/ic_action_mail"
-            android:gravity="right|center_vertical"
-            android:hint="تاريخ الميلاد"
+            android:hint="رقم العمارة"
             android:padding="@dimen/_5sdp"
             android:textSize="@dimen/textSize" />
 
@@ -83,12 +93,116 @@
         </LinearLayout>
 
         <EditText
-            android:id="@+id/edtEnterNewMemberBlockNumber"
+            android:id="@+id/edtEnterNewMemberMobile_1"
             android:layout_width="match_parent"
             android:layout_height="@dimen/viewHeight"
             android:layout_marginBottom="@dimen/marginBottom"
             android:background="@drawable/dropdown_background"
-            android:hint="رقم العمارة"
+            android:drawablePadding="@dimen/_4sdp"
+            android:drawableRight="@drawable/ic_action_phone_android"
+            android:hint="@string/mobile_1"
+            android:inputType="phone"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <EditText
+            android:id="@+id/edtEnterNewMemberMobile_2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:drawablePadding="@dimen/_4sdp"
+            android:drawableRight="@drawable/ic_action_phone_android"
+            android:hint="@string/mobile_2"
+            android:inputType="phone"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <EditText
+            android:id="@+id/edtEnterNewMemberPhone_1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:drawablePadding="@dimen/_4sdp"
+            android:drawableRight="@drawable/ic_action_phone"
+            android:hint="تليفون ارضى 1"
+            android:inputType="phone"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <EditText
+            android:id="@+id/edtEnterNewMemberPhone_2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:drawablePadding="@dimen/_4sdp"
+            android:drawableRight="@drawable/ic_action_phone"
+            android:hint="تليفون ارضى 2"
+            android:inputType="phone"
+            android:padding="@dimen/_5sdp"
+
+            android:textSize="@dimen/textSize" />
+
+        <TextView
+            android:id="@+id/edtEnterNewMemberBirthdate"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:drawablePadding="@dimen/_7sdp"
+            android:drawableRight="@drawable/ic_action_date_range"
+            android:gravity="right|center_vertical"
+            android:hint="تاريخ الميلاد"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <EditText
+            android:id="@+id/edtEnterNewMemberNationalId"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:hint="الرقم القومى"
+            android:inputType="numberDecimal"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <EditText
+            android:id="@+id/edtEnterNewMemberMail"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:drawablePadding="@dimen/_4sdp"
+            android:drawableRight="@drawable/ic_action_contact_mail"
+            android:hint="البريد الإليكترونى"
+            android:inputType="textEmailAddress"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <EditText
+            android:id="@+id/edtEnterNewMemberFather"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:drawablePadding="@dimen/_4sdp"
+            android:hint="أب الأعتراف"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <TextView
+            android:id="@+id/edtEnterNewMemberBaptismDate"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:drawablePadding="@dimen/_7sdp"
+            android:drawableRight="@drawable/ic_action_date_range"
+            android:gravity="right|center_vertical"
+            android:hint="تاريخ المعمودية"
             android:padding="@dimen/_5sdp"
             android:textSize="@dimen/textSize" />
 
@@ -119,18 +233,10 @@
             android:layout_marginBottom="@dimen/marginBottom"
             android:background="@drawable/dropdown_background"
             android:hint="سنة التخرج"
+            android:inputType="numberDecimal"
             android:padding="@dimen/_5sdp"
             android:textSize="@dimen/textSize" />
 
-        <EditText
-            android:id="@+id/edtEnterNewMemberNationalId"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/viewHeight"
-            android:layout_marginBottom="@dimen/marginBottom"
-            android:background="@drawable/dropdown_background"
-            android:hint="الرقم القومى"
-            android:padding="@dimen/_5sdp"
-            android:textSize="@dimen/textSize" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -140,15 +246,6 @@
             <include layout="@layout/dropdown_job" />
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/edtEnterNewMemberMail"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/viewHeight"
-            android:layout_marginBottom="@dimen/marginBottom"
-            android:background="@drawable/dropdown_background"
-            android:hint="البريد الإليكترونى"
-            android:padding="@dimen/_5sdp"
-            android:textSize="@dimen/textSize" />
 
         <TextView
             android:id="@+id/edtEnterNewMemberMiraggeDate"
@@ -157,61 +254,12 @@
             android:layout_marginBottom="@dimen/marginBottom"
             android:background="@drawable/dropdown_background"
             android:drawablePadding="@dimen/_7sdp"
-            android:drawableRight="@drawable/ic_action_mail"
+            android:drawableRight="@drawable/ic_action_date_range"
             android:gravity="right|center_vertical"
             android:hint="تاريخ الزواج"
             android:padding="@dimen/_5sdp"
             android:textSize="@dimen/textSize" />
 
-        <EditText
-            android:id="@+id/edtEnterNewMemberMobile_1"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/viewHeight"
-            android:layout_marginBottom="@dimen/marginBottom"
-            android:background="@drawable/dropdown_background"
-            android:hint="@string/mobile_1"
-            android:padding="@dimen/_5sdp"
-            android:textSize="@dimen/textSize" />
-
-        <EditText
-            android:id="@+id/edtEnterNewMemberMobile_2"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/viewHeight"
-            android:layout_marginBottom="@dimen/marginBottom"
-            android:background="@drawable/dropdown_background"
-            android:hint="@string/mobile_2"
-            android:padding="@dimen/_5sdp"
-            android:textSize="@dimen/textSize" />
-
-        <EditText
-            android:id="@+id/edtEnterNewMemberName"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/viewHeight"
-            android:layout_marginBottom="@dimen/marginBottom"
-            android:background="@drawable/dropdown_background"
-            android:hint="@string/name"
-            android:padding="@dimen/_5sdp"
-            android:textSize="@dimen/textSize" />
-
-        <EditText
-            android:id="@+id/edtEnterNewMemberPhone_1"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/viewHeight"
-            android:layout_marginBottom="@dimen/marginBottom"
-            android:background="@drawable/dropdown_background"
-            android:hint="تليفون ارضى 1"
-            android:padding="@dimen/_5sdp"
-            android:textSize="@dimen/textSize" />
-
-        <EditText
-            android:id="@+id/edtEnterNewMemberPhone_2"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/viewHeight"
-            android:layout_marginBottom="@dimen/marginBottom"
-            android:background="@drawable/dropdown_background"
-            android:hint="تليفون ارضى 2"
-            android:padding="@dimen/_5sdp"
-            android:textSize="@dimen/textSize" />
 
         <EditText
             android:id="@+id/edtEnterNewMemberSocialStatus"
@@ -223,13 +271,6 @@
             android:padding="@dimen/_5sdp"
             android:textSize="@dimen/textSize" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/marginBottom">
-
-            <include layout="@layout/dropdown_father" />
-        </LinearLayout>
 
         <EditText
             android:id="@+id/edtEnterNewMemberNotes"
