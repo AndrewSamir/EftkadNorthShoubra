@@ -30,7 +30,8 @@ public class EnterNewArea extends AppCompatActivity implements InterfaceDailogCl
 
     @OnClick(R.id.linearDropdownChurch)
     public void onClicklinearDropdownChurch() {
-        HandleListDialog.getInstance(this).callGetChurchs(DataEnum.callGetChurchs.name());
+            HandleListDialog.getInstance(this).callGetChurchs(DataEnum.callGetChurchs.name());
+
     }
 
     //=================================================================================//
@@ -41,10 +42,14 @@ public class EnterNewArea extends AppCompatActivity implements InterfaceDailogCl
 
     @OnClick(R.id.btnEnterAreaAdd)
     public void onClickbtnEnterAreaAdd() {
-        // TODO
+        if (textDropdownChurch.getText().toString().length() > 0)
         HandleAddDataToFirebase.getInstance(this).callAddArea(DataEnum.callAddArea.name(),
                 edtEnterAreaArea.getText().toString(),
                 textDropdownChurch.getText().toString());
+        else {
+
+            textDropdownChurch.setError(getString(R.string.required_field));
+        }
     }
 
     @Override

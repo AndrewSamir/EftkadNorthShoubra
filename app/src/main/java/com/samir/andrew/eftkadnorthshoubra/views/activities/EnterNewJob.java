@@ -30,9 +30,11 @@ public class EnterNewJob extends AppCompatActivity implements InterfaceAddDataTo
     @OnClick(R.id.btnEnterJob)
     public void onClickbtnEnterJob() {
         // TODO submit data to server...
-
-        HandleAddDataToFirebase.getInstance(EnterNewJob.this).callAddJob(DataEnum.callAddJob.name(), edtEnterJobJob.getText().toString());
-
+        if (edtEnterJobJob.getText().toString().length() > 0)
+            HandleAddDataToFirebase.getInstance(EnterNewJob.this).callAddJob(DataEnum.callAddJob.name(), edtEnterJobJob.getText().toString());
+        else {
+            edtEnterJobJob.setError(getString(R.string.required_field));
+        }
     }
 
     @Override

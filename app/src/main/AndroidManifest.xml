@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".views.activities.SplashScreen">
+        <activity
+            android:name=".views.activities.SplashScreen"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -43,9 +45,9 @@
         <activity
             android:name=".views.activities.EnterNewStreet"
             android:label="@string/title_activity_enter_new_street"
-            android:windowSoftInputMode="stateAlwaysVisible"
             android:parentActivityName=".views.activities.HomeActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysVisible">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.samir.andrew.eftkadnorthshoubra.views.activities.HomeActivity" />
@@ -62,9 +64,9 @@
         <activity
             android:name=".views.activities.EnterFather"
             android:label="@string/title_activity_enter_father"
-            android:windowSoftInputMode="adjustResize"
             android:parentActivityName=".views.activities.HomeActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.samir.andrew.eftkadnorthshoubra.views.activities.HomeActivity" />
@@ -72,10 +74,10 @@
         <activity
             android:name=".views.activities.EnterNewJob"
             android:label="@string/title_activity_enter_new_job"
-            android:windowSoftInputMode="adjustResize"
-
             android:parentActivityName=".views.activities.HomeActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.samir.andrew.eftkadnorthshoubra.views.activities.HomeActivity" />
@@ -84,9 +86,9 @@
             android:name=".views.activities.EnterQualifaction"
             android:label="@string/title_activity_enter_qualifaction"
             android:parentActivityName=".views.activities.HomeActivity"
-            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/AppTheme.NoActionBar"
 
-            android:theme="@style/AppTheme.NoActionBar">
+            android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.samir.andrew.eftkadnorthshoubra.views.activities.HomeActivity" />
@@ -95,9 +97,9 @@
             android:name=".views.activities.EnterNewRelationship"
             android:label="@string/title_activity_enter_new_parent"
             android:parentActivityName=".views.activities.HomeActivity"
-            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/AppTheme.NoActionBar"
 
-            android:theme="@style/AppTheme.NoActionBar">
+            android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.samir.andrew.eftkadnorthshoubra.views.activities.HomeActivity" />

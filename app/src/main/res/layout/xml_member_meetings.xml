@@ -16,12 +16,13 @@
         android:textColor="@color/colorInactiveField"
         android:textSize="@dimen/textSize" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvAddGroupMembers"
+    <LinearLayout
+        android:id="@+id/linearMemberMeetings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:layout_marginBottom="@dimen/marginBottom" />
+        android:orientation="vertical"
+        android:gravity="right"
+        android:padding="@dimen/_10sdp"></LinearLayout>
 
     <Button
         android:id="@+id/btnAddMemberMeeting"

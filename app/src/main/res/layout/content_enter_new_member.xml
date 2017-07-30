@@ -12,6 +12,8 @@
     tools:showIn="@layout/activity_enter_new_member">
 
     <LinearLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -154,7 +156,7 @@
             android:drawablePadding="@dimen/_7sdp"
             android:drawableRight="@drawable/ic_action_date_range"
             android:gravity="right|center_vertical"
-            android:hint="تاريخ الميلاد"
+            android:hint="@string/hint_birthdate"
             android:padding="@dimen/_5sdp"
             android:textSize="@dimen/textSize" />
 
@@ -202,7 +204,7 @@
             android:drawablePadding="@dimen/_7sdp"
             android:drawableRight="@drawable/ic_action_date_range"
             android:gravity="right|center_vertical"
-            android:hint="تاريخ المعمودية"
+            android:hint="@string/hint_baptism"
             android:padding="@dimen/_5sdp"
             android:textSize="@dimen/textSize" />
 
@@ -237,6 +239,13 @@
             android:padding="@dimen/_5sdp"
             android:textSize="@dimen/textSize" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginBottom">
+
+            <include layout="@layout/dropdown_qualification" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -256,7 +265,7 @@
             android:drawablePadding="@dimen/_7sdp"
             android:drawableRight="@drawable/ic_action_date_range"
             android:gravity="right|center_vertical"
-            android:hint="تاريخ الزواج"
+            android:hint="@string/hint_mirrage"
             android:padding="@dimen/_5sdp"
             android:textSize="@dimen/textSize" />
 

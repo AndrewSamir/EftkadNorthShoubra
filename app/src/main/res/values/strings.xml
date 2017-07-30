@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Eftkad North Shoubra</string>
+    <string name="app_name">كنائس شبرا الشماليه</string>
     <string name="title_activity_login">Login</string>
     <string name="user_name">user name</string>
     <string name="password">password</string>
@@ -79,5 +79,9 @@
     <string name="fire_street_data">streetData</string>
     <string name="fire_members">members</string>
     <string name="choose_Street">أختر شارع ...</string>
+    <string name="hint_birthdate">تاريخ الميلاد</string>
+    <string name="hint_baptism">تاريخ المعمودية</string>
+    <string name="hint_mirrage">تاريخ الزواج</string>
+    <string name="add_meetings">إضافة الاجتماعات</string>
 
 </resources>

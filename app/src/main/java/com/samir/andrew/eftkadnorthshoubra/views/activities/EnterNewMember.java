@@ -1,12 +1,16 @@
 package com.samir.andrew.eftkadnorthshoubra.views.activities;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.samir.andrew.eftkadnorthshoubra.R;
@@ -17,12 +21,21 @@ import com.samir.andrew.eftkadnorthshoubra.utlities.DataEnum;
 import com.samir.andrew.eftkadnorthshoubra.utlities.HandleAddDataToFirebase;
 import com.samir.andrew.eftkadnorthshoubra.utlities.HandleListDialog;
 import com.samir.andrew.eftkadnorthshoubra.utlities.HelpMe;
+import com.sdsmdg.tastytoast.TastyToast;
+import com.wdullaer.materialdatetimepicker.date.DatePickerController;
+
+import java.util.Calendar;
+import java.util.Locale;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class EnterNewMember extends AppCompatActivity implements InterfaceDailogClicked, InterfaceAddDataToFirebase {
+public class EnterNewMember extends AppCompatActivity implements InterfaceDailogClicked, InterfaceAddDataToFirebase, com.wdullaer.materialdatetimepicker.date.DatePickerDialog.OnDateSetListener {
+
+    private Calendar calendar;
+
+    private String textDate;
 
     @Bind(R.id.edtEnterNewMemberName)
     EditText edtEnterNewMemberName;
@@ -54,7 +67,8 @@ public class EnterNewMember extends AppCompatActivity implements InterfaceDailog
 
     @OnClick(R.id.edtEnterNewMemberBirthdate)
     public void onClickedtEnterNewMemberBirthdate() {
-        // TODO submit data to server...
+        textDate = DataEnum.Birthdate.name();
+        getCalendar();
     }
 
     @Bind(R.id.edtEnterNewMemberNationalId)
@@ -71,7 +85,8 @@ public class EnterNewMember extends AppCompatActivity implements InterfaceDailog
 
     @OnClick(R.id.edtEnterNewMemberBaptismDate)
     public void onClickedtEnterNewMemberBaptismDate() {
-        // TODO submit data to server...
+        textDate = DataEnum.Baptism.name();
+        getCalendar();
     }
 
     @Bind(R.id.edtEnterNewMemberRelationshipInFamily)
@@ -92,13 +107,6 @@ public class EnterNewMember extends AppCompatActivity implements InterfaceDailog
 
         HandleListDialog.getInstance(this).callGetJobs(DataEnum.callGetJobs.name());
 
-     /*   if (!textDropdownChurch.getText().toString().equals(getString(R.string.choose_church))) {
-            textDropdownArea.setError(null);
-            HandleListDialog.getInstance(this).callGetAreas(DataEnum.callGetAreas.name(), textDropdownChurch.getText().toString());
-
-        } else {
-            textDropdownChurch.setError(getString(R.string.required_field));
-        }*/
     }
 
     @Bind(R.id.edtEnterNewMemberMiraggeDate)
@@ -106,9 +114,9 @@ public class EnterNewMember extends AppCompatActivity implements InterfaceDailog
 
     @OnClick(R.id.edtEnterNewMemberMiraggeDate)
     public void onClickedtEnterNewMemberMiraggeDate() {
-        // TODO submit data to server...
+        textDate = DataEnum.Mirrage.name();
+        getCalendar();
     }
-
 
     @Bind(R.id.edtEnterNewMemberSocialStatus)
     EditText edtEnterNewMemberSocialStatus;
@@ -123,7 +131,6 @@ public class EnterNewMember extends AppCompatActivity implements InterfaceDailog
         HandleListDialog.getInstance(this).callGetChurchs(DataEnum.callGetChurchs.name());
         textDropdownArea.setText(getString(R.string.choose_area));
         textDropdownStreet.setText(getString(R.string.choose_Street));
-
     }
 
     //dropdown area
@@ -137,11 +144,19 @@ public class EnterNewMember extends AppCompatActivity implements InterfaceDailog
             textDropdownArea.setError(null);
             HandleListDialog.getInstance(this).callGetAreas(DataEnum.callGetAreas.name(), textDropdownChurch.getText().toString());
             textDropdownStreet.setText(getString(R.string.choose_Street));
-
-
         } else {
             textDropdownChurch.setError(getString(R.string.required_field));
         }
+    }
+
+    //dropdown church
+    @Bind(R.id.textDropdownQualification)
+    TextView textDropdownQualification;
+
+    @OnClick(R.id.linearDropdownQualification)
+    public void onClicklinearDropdownQualification() {
+        textDropdownQualification.setError(null);
+        HandleListDialog.getInstance(this).callGetQualifications(DataEnum.callGetQualifications.name());
     }
 
 
@@ -177,6 +192,21 @@ public class EnterNewMember extends AppCompatActivity implements InterfaceDailog
             callAddNewMember();
         }
     }
+
+    @OnClick(R.id.btnAddMemberMeeting)
+    public void onClickbtnAddMemberMeeting() {
+        if (!textDropdownChurch.getText().toString().equals(getString(R.string.choose_church)))
+            HandleListDialog.getInstance(this).callGetMeetings(DataEnum.callGetMettings.name(), textDropdownChurch.getText().toString());
+        else {
+
+            textDropdownChurch.setError(getString(R.string.required_field));
+            textDropdownChurch.setFocusable(true);
+            textDropdownChurch.requestFocus();
+        }
+    }
+
+    @Bind(R.id.linearMemberMeetings)
+    LinearLayout linearMemberMeetings;
 
     private void callAddNewMember() {
 
@@ -228,6 +258,89 @@ public class EnterNewMember extends AppCompatActivity implements InterfaceDailog
         } else {
             modelMember.setMember_phone_2("e");
         }
+
+        if (edtEnterNewMemberBirthdate.getText().toString().equals(getString(R.string.hint_birthdate))) {
+            modelMember.setMember_birthdate(edtEnterNewMemberBirthdate.getText().toString());
+        } else {
+            modelMember.setMember_birthdate("e");
+        }
+        if (edtEnterNewMemberBaptismDate.getText().toString().equals(getString(R.string.hint_baptism))) {
+            modelMember.setMember_baptism_data(edtEnterNewMemberBaptismDate.getText().toString());
+        } else {
+            modelMember.setMember_baptism_data("e");
+        }
+        if (edtEnterNewMemberMiraggeDate.getText().toString().equals(getString(R.string.hint_mirrage))) {
+            modelMember.setMember_marriage_date(edtEnterNewMemberMiraggeDate.getText().toString());
+        } else {
+            modelMember.setMember_marriage_date("e");
+        }
+
+        if (textDropdownQualification.getText().toString().equals(getString(R.string.choose_qualification))) {
+            modelMember.setMember_qualification(textDropdownQualification.getText().toString());
+        } else {
+            modelMember.setMember_qualification("e");
+        }
+
+        if (textDropdownJob.getText().toString().equals(getString(R.string.choose_Job))) {
+            modelMember.setMember_job(textDropdownJob.getText().toString());
+        } else {
+            modelMember.setMember_job("e");
+        }
+
+        if (edtEnterNewMemberNationalId.getText().toString().length() > 0) {
+            modelMember.setMember_national_id(edtEnterNewMemberNationalId.getText().toString());
+        } else {
+            modelMember.setMember_national_id("e");
+        }
+
+        if (edtEnterNewMemberMail.getText().toString().length() > 0) {
+            modelMember.setMember_mail(edtEnterNewMemberMail.getText().toString());
+        } else {
+            modelMember.setMember_mail("e");
+        }
+
+
+        if (edtEnterNewMemberFather.getText().toString().length() > 0) {
+            modelMember.setFather(edtEnterNewMemberFather.getText().toString());
+        } else {
+            modelMember.setFather("e");
+        }
+
+        if (edtEnterNewMemberRelationshipInFamily.getText().toString().length() > 0) {
+            modelMember.setMember_discription_in_family(edtEnterNewMemberRelationshipInFamily.getText().toString());
+        } else {
+            modelMember.setMember_discription_in_family("e");
+        }
+
+        if (edtEnterNewMemberFacebook.getText().toString().length() > 0) {
+            modelMember.setMember_facebook_link(edtEnterNewMemberFacebook.getText().toString());
+        } else {
+            modelMember.setMember_facebook_link("e");
+        }
+
+
+        if (edtEnterNewMemberGraduationYear.getText().toString().length() > 0) {
+            modelMember.setMember_graduation_year(edtEnterNewMemberGraduationYear.getText().toString());
+        } else {
+            modelMember.setMember_graduation_year("e");
+        }
+        if (edtEnterNewMemberSocialStatus.getText().toString().length() > 0) {
+            modelMember.setMember_social_status(edtEnterNewMemberSocialStatus.getText().toString());
+        } else {
+            modelMember.setMember_social_status("e");
+        }
+        if (edtEnterNewMemberNotes.getText().toString().length() > 0) {
+            modelMember.setNotes(edtEnterNewMemberNotes.getText().toString());
+        } else {
+            modelMember.setNotes("e");
+        }
+
+
+        HandleAddDataToFirebase.getInstance(this).callAddMember(DataEnum.callAddMember.name(),
+                textDropdownChurch.getText().toString(),
+                textDropdownArea.getText().toString(),
+                textDropdownStreet.getText().toString(),
+                modelMember);
     }
 
 
@@ -261,12 +374,40 @@ public class EnterNewMember extends AppCompatActivity implements InterfaceDailog
         } else if (flag.equals(DataEnum.callGetJobs.name())) {
 
             textDropdownJob.setText(name);
+        } else if (flag.equals(DataEnum.callGetQualifications.name())) {
+
+            textDropdownQualification.setText(name);
+        } else if (flag.equals(DataEnum.callGetMettings.name())) {
+
+            if (name.contains(",")) {
+                String[] meetings = name.split(",");
+
+                for (String s : meetings) {
+
+                    TextView textview = new TextView(this);
+                    textview.setText(s);
+                    textview.setGravity(Gravity.RIGHT);
+                    linearMemberMeetings.addView(textview);
+                }
+
+            } else {
+                TextView textview = new TextView(this);
+                textview.setText(name);
+                linearMemberMeetings.addView(textview);
+
+            }
         }
 
     }
 
     @Override
     public void onDataAddedSuccess(String flag) {
+
+        if (flag.equals(DataEnum.callAddMember.name())) {
+
+            TastyToast.makeText(this, "تم إضافة عضو جديد بنجاح", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
+            onBackPressed();
+        }
 
     }
 
@@ -314,5 +455,39 @@ public class EnterNewMember extends AppCompatActivity implements InterfaceDailog
         }
 
         return valid;
+    }
+
+    @Override
+    public void onDateSet(com.wdullaer.materialdatetimepicker.date.DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+
+        java.text.SimpleDateFormat simpleDateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+        if (textDate.equals(DataEnum.Birthdate.name())) {
+            edtEnterNewMemberBirthdate.setText(simpleDateFormat.format(calendar.getTime()));
+        } else if (textDate.equals(DataEnum.Baptism.name())) {
+            edtEnterNewMemberBaptismDate.setText(simpleDateFormat.format(calendar.getTime()));
+        } else if (textDate.equals(DataEnum.Mirrage.name())) {
+            edtEnterNewMemberMiraggeDate.setText(simpleDateFormat.format(calendar.getTime()));
+        }
+    }
+
+    private void getCalendar() {
+
+        calendar = Calendar.getInstance();
+        com.wdullaer.materialdatetimepicker.date.DatePickerDialog dpd = com.wdullaer.materialdatetimepicker.date.DatePickerDialog.newInstance(
+                EnterNewMember.this,
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+        );
+        //  dpd.setThemeDark(true);
+
+        dpd.setMaxDate(calendar);
+        dpd.vibrate(true);
+        dpd.dismissOnPause(true);
+        // dpd.showYearPickerFirst(true);
+        dpd.setVersion(com.wdullaer.materialdatetimepicker.date.DatePickerDialog.Version.VERSION_2);
+        dpd.setAccentColor(getResources().getColor(R.color.colorAccent));
+        // dpd.setVersion(showVersion2.isChecked() ? DatePickerDialog.Version.VERSION_2 : DatePickerDialog.Version.VERSION_1);
+        dpd.show(getFragmentManager(), "Datepickerdialog");
     }
 }

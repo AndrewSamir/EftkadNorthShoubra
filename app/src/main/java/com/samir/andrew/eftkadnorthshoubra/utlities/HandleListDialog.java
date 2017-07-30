@@ -4,6 +4,11 @@ import android.app.Dialog;
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.firebase.database.DataSnapshot;
@@ -315,7 +320,7 @@ public class HandleListDialog {
                         DataSnapshot myChild = myChildren.iterator().next();
                         stringArrayList.add(myChild.getValue().toString());
                     }
-                    populate(stringArrayList, flag, context.getString(R.string.meetings));
+                    populateCheckboxes(stringArrayList, flag, context.getString(R.string.meetings));
                     progressDialog.dismiss();
                 }
 
@@ -341,6 +346,13 @@ public class HandleListDialog {
         }
     }
 
+    private void populateCheckboxes(ArrayList<String> jobItems, String flag, String dialogTitle) {
+
+        if (jobItems.size() > 0) {
+            showDialogCheckboxes(jobItems, flag, dialogTitle);
+        }
+    }
+
     private void ShowDIalog(ArrayList<String> arrName, final String flag, String dialogTitle) {
         new MaterialDialog.Builder(context)
                 .title(dialogTitle)
@@ -360,6 +372,62 @@ public class HandleListDialog {
                 })
                 .negativeText(context.getString(R.string.cancel))
                 .show();
+    }
+
+    public void showDialogCheckboxes(final ArrayList<String> jobItems, final String flag, String dialogTitle) {
+        final Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.dialog_custom_checkboxes);
+
+        final LinearLayout linearLayout = (LinearLayout) dialog.findViewById(R.id.linearDialogCustomCheckboxes);
+
+        for (String s : jobItems) {
+
+            CheckBox checkBox = new CheckBox(context);
+            checkBox.setText(s);
+            checkBox.setId(jobItems.indexOf(s));
+            linearLayout.addView(checkBox);
+        }
+
+
+        TextView tvDialogAction = (TextView) dialog.findViewById(R.id.tvDialogAction);
+        final TextView tvDialogBack = (TextView) dialog.findViewById(R.id.tvDialogBack);
+
+
+        tvDialogAction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String choosenMeetings = "";
+                for (String s : jobItems) {
+
+                    CheckBox checkBox = (CheckBox) dialog.findViewById(jobItems.indexOf(s));
+                    if (checkBox.isChecked()) {
+                        if (choosenMeetings.length() > 0) {
+                            choosenMeetings += "," + s;
+                        } else {
+                            choosenMeetings += s;
+                        }
+                    }
+
+                }
+
+                clickListener.onClickDialog(choosenMeetings + "", flag);
+
+                dialog.dismiss();
+            }
+        });
+
+        tvDialogBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+
+
     }
 
     public Boolean isOnline() {

@@ -55,6 +55,7 @@ dependencies {
     compile 'com.afollestad.material-dialogs:core:0.9.4.1'
     compile 'com.pacioianu.david:ink-page-indicator:1.2.0'
     compile 'com.github.kickstartinteractiveandroidteam:KsiProjectMate:v1.1'
+    compile 'com.wdullaer:materialdatetimepicker:3.2.2'
 
     testCompile 'junit:junit:4.12'
 }
