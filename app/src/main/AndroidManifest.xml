@@ -75,7 +75,6 @@
             android:name=".views.activities.EnterNewJob"
             android:label="@string/title_activity_enter_new_job"
             android:parentActivityName=".views.activities.HomeActivity"
-
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize">
             <meta-data
@@ -87,7 +86,6 @@
             android:label="@string/title_activity_enter_qualifaction"
             android:parentActivityName=".views.activities.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar"
-
             android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -98,7 +96,6 @@
             android:label="@string/title_activity_enter_new_parent"
             android:parentActivityName=".views.activities.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar"
-
             android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -122,6 +119,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.samir.andrew.eftkadnorthshoubra.views.activities.HomeActivity" />
         </activity>
+        <activity
+            android:name=".views.activities.SearchResult"
+            android:label="@string/title_activity_search_result"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

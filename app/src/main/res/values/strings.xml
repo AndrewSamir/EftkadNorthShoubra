@@ -83,5 +83,16 @@
     <string name="hint_baptism">تاريخ المعمودية</string>
     <string name="hint_mirrage">تاريخ الزواج</string>
     <string name="add_meetings">إضافة الاجتماعات</string>
+    <string name="search">بحث</string>
+    <string name="fire_member_name">member_name</string>
+    <string name="fire_member_mobile_1">member_mobile_1</string>
+    <string name="fire_member_mobile_2">member_mobile_2</string>
+    <string name="fire_member_phone_1">member_phone_1</string>
+    <string name="fire_member_phone_2">member_phone_2</string>
+    <string name="fire_member_father">father</string>
+    <string name="fire_member_job">member_job</string>
+    <string name="fire_member_social_statue">member_social_status</string>
+    <string name="fire_member_qualification">member_qualification</string>
+    <string name="title_activity_search_result">نتائج البحث</string>
 
 </resources>

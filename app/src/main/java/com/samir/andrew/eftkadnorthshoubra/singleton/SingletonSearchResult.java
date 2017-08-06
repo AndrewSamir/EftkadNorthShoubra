@@ -1,27 +1,34 @@
-package com.samir.andrew.eftkadnorthshoubra.models.newMember;
+package com.samir.andrew.eftkadnorthshoubra.singleton;
 
 /**
- * Created by andre on 26-Jul-17.
+ * Created by ksi on 03-Jul-17.
  */
 
-public class ModelMember {
+public class SingletonSearchResult {
 
-    public String father, member_baptism_data, member_birthdate, member_block_no, member_discription_in_family,
+    private static SingletonSearchResult mInstance = null;
+
+    private String father, member_baptism_data, member_birthdate, member_block_no, member_discription_in_family,
             member_facebook_link, member_flat_no, member_floor_no, member_graduation_year, member_job, member_mail,
             member_marriage_date, member_mobile_1, member_mobile_2, member_name, member_national_id, member_phone_1,
-            member_phone_2, member_qualification, member_social_status, notes,member_street;
+            member_phone_2, member_qualification, member_social_status, notes;
 
-    String[] member_meetings;
-
-    public ModelMember() {
+    private SingletonSearchResult() {
     }
 
-    public String getMember_street() {
-        return member_street;
+    public static SingletonSearchResult getInstance() {
+        if (mInstance == null) {
+            mInstance = new SingletonSearchResult();
+        }
+        return mInstance;
     }
 
-    public void setMember_street(String member_street) {
-        this.member_street = member_street;
+    public static SingletonSearchResult getmInstance() {
+        return mInstance;
+    }
+
+    public static void setmInstance(SingletonSearchResult mInstance) {
+        SingletonSearchResult.mInstance = mInstance;
     }
 
     public String getFather() {
@@ -190,13 +197,5 @@ public class ModelMember {
 
     public void setNotes(String notes) {
         this.notes = notes;
-    }
-
-    public String[] getMember_meetings() {
-        return member_meetings;
-    }
-
-    public void setMember_meetings(String[] member_meetings) {
-        this.member_meetings = member_meetings;
     }
 }

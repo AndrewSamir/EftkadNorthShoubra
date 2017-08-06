@@ -212,6 +212,7 @@ public class EnterNewMember extends AppCompatActivity implements InterfaceDailog
 
         ModelMember modelMember = new ModelMember();
         modelMember.setMember_name(edtEnterNewMemberName.getText().toString());
+        modelMember.setMember_street(textDropdownStreet.getText().toString());
 
         if (edtEnterNewMemberBlockNumber.getText().toString().length() > 0) {
             modelMember.setMember_block_no(edtEnterNewMemberBlockNumber.getText().toString());
@@ -275,13 +276,13 @@ public class EnterNewMember extends AppCompatActivity implements InterfaceDailog
             modelMember.setMember_marriage_date("e");
         }
 
-        if (textDropdownQualification.getText().toString().equals(getString(R.string.choose_qualification))) {
+        if (!textDropdownQualification.getText().toString().equals(getString(R.string.choose_qualification))) {
             modelMember.setMember_qualification(textDropdownQualification.getText().toString());
         } else {
             modelMember.setMember_qualification("e");
         }
 
-        if (textDropdownJob.getText().toString().equals(getString(R.string.choose_Job))) {
+        if (!textDropdownJob.getText().toString().equals(getString(R.string.choose_Job))) {
             modelMember.setMember_job(textDropdownJob.getText().toString());
         } else {
             modelMember.setMember_job("e");
