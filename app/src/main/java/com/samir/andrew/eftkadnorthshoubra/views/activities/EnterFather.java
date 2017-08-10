@@ -23,6 +23,7 @@ import com.sdsmdg.tastytoast.TastyToast;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import developer.mokadim.projectmate.SharedPrefUtil;
 
 public class EnterFather extends AppCompatActivity implements InterfaceDailogClicked, InterfaceAddDataToFirebase {
 
@@ -53,6 +54,9 @@ public class EnterFather extends AppCompatActivity implements InterfaceDailogCli
             addNewFather();
     }
 
+    @Bind(R.id.edtEnterFatherAppMail)
+    EditText edtEnterFatherAppMail;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +72,9 @@ public class EnterFather extends AppCompatActivity implements InterfaceDailogCli
 
         HandleListDialog.getInstance(this).setClickDialogListener(this);
         HandleAddDataToFirebase.getInstance(this).setClickDialogListener(this);
+
+        textDropdownChurch.setText(SharedPrefUtil.getInstance(this).read(DataEnum.shChurch.name(), getString(R.string.choose_church)));
+
     }
 
     @Override
@@ -100,10 +107,13 @@ public class EnterFather extends AppCompatActivity implements InterfaceDailogCli
         modelNewFather.setFather_name(edtEnterFatherName.getText().toString());
         modelNewFather.setFather_mobile_1(edtEnterFatherMobile_1.getText().toString());
         modelNewFather.setFather_mobile_2(edtEnterFatherMobile_2.getText().toString());
+        modelNewFather.setFather_app_mail(edtEnterFatherAppMail.getText().toString());
 
         HandleAddDataToFirebase.getInstance(this).callAddFather(DataEnum.callAddFather.name(),
                 textDropdownChurch.getText().toString(),
                 modelNewFather);
+
+        onBackPressed();
     }
 
     private boolean validate() {
@@ -121,6 +131,12 @@ public class EnterFather extends AppCompatActivity implements InterfaceDailogCli
             textDropdownChurch.setFocusable(true);
             textDropdownChurch.requestFocus();
             textDropdownChurch.setError(getString(R.string.required_field));
+        }
+        if (edtEnterFatherAppMail.getText().toString().length() == 0) {
+            valid = false;
+            edtEnterFatherAppMail.setFocusable(true);
+            edtEnterFatherAppMail.requestFocus();
+            edtEnterFatherAppMail.setError(getString(R.string.required_field));
         }
 
         return valid;

@@ -3,6 +3,7 @@ package com.samir.andrew.eftkadnorthshoubra.views.activities;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -19,6 +20,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +39,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import developer.mokadim.projectmate.SharedPrefUtil;
 import developer.mokadim.projectmate.dialog.IndicatorStyle;
 import developer.mokadim.projectmate.dialog.ProgressDialog;
 
@@ -137,6 +140,9 @@ public class HomeActivity extends AppCompatActivity
         }
     }
 
+    @Bind(R.id.textDropdownMeeting)
+    TextView textDropdownMeeting;
+
     //dropdown church
     @Bind(R.id.textDropdownQualification)
     TextView textDropdownQualification;
@@ -176,6 +182,22 @@ public class HomeActivity extends AppCompatActivity
 
     @Bind(R.id.btnEnterNewMemberAdd)
     Button btnEnterNewMemberAdd;
+
+    @Bind(R.id.linearMeetingOld)
+    LinearLayout linearMeetingOld;
+
+    @Bind(R.id.linearDropdownChooseMeeting)
+    LinearLayout linearDropdownChooseMeeting;
+
+    @OnClick(R.id.linearDropdownMeeting)
+    public void onClicklinearDropdownMeeting() {
+        if (!textDropdownChurch.getText().toString().equals(getString(R.string.choose_church))) {
+            HandleListDialog.getInstance(this).callGetMeetingsSearch(DataEnum.callGetMettings.name(), textDropdownChurch.getText().toString());
+
+        } else {
+            textDropdownChurch.setError(getString(R.string.required_field));
+        }
+    }
 
     @OnClick(R.id.btnEnterNewMemberAdd)
     public void onClickbtnEnterNewMemberAdd() {
@@ -221,6 +243,7 @@ public class HomeActivity extends AppCompatActivity
     String chQualification = "";
     String chJob = "";
     String chSocialStatue = "";
+    String chMeeting = "";
 
     public static List<ModelMember> modelMemberList;
 
@@ -268,6 +291,9 @@ public class HomeActivity extends AppCompatActivity
         edtEnterNewMemberNotes.setVisibility(View.GONE);
         edtEnterNewMemberBirthdate.setVisibility(View.GONE);
         btnEnterNewMemberAdd.setText(getString(R.string.search));
+        linearMeetingOld.setVisibility(View.GONE);
+
+        textDropdownChurch.setText(SharedPrefUtil.getInstance(this).read(DataEnum.shChurch.name(), getString(R.string.choose_church)));
     }
 
     @Override
@@ -278,28 +304,6 @@ public class HomeActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -328,13 +332,16 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_enter_new_street) {
             startActivity(new Intent(this, EnterNewStreet.class));
 
-        } else if (id == R.id.nav_enter_new_user) {
-            startActivity(new Intent(this, EnterNewUser.class));
-
         } else if (id == R.id.nav_enter_new_qualification) {
             startActivity(new Intent(this, EnterQualifaction.class));
 
+        } else if (id == R.id.nav_logout) {
+            FirebaseAuth.getInstance().signOut();
+            SharedPrefUtil.getInstance(this).remove(DataEnum.shChurch.name(), DataEnum.shFather.name());
+            startActivity(new Intent(this, Login.class));
+
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -388,9 +395,8 @@ public class HomeActivity extends AppCompatActivity
                                                     if (member.child(getString(R.string.fire_member_qualification)).getValue().toString().equals(chQualification) ||
                                                             chQualification.equals("")) {
 
-                                                        myRef.child("test search").push().setValue(member.child(getString(R.string.fire_member_name)).getValue().toString());
-
                                                         ModelMember member_ = member.getValue(ModelMember.class);
+                                                        member_.setKey(member.getKey());
                                                         modelMemberList.add(member_);
 
                                                     }
@@ -446,6 +452,9 @@ public class HomeActivity extends AppCompatActivity
         if (!textDropdownStreet.getText().toString().equals(getString(R.string.choose_Street))) {
             chStreet = textDropdownStreet.getText().toString();
         }
+        if (!textDropdownMeeting.getText().toString().equals(getString(R.string.choose_meeting))) {
+            chMeeting = textDropdownMeeting.getText().toString();
+        }
 
     }
 
@@ -464,6 +473,9 @@ public class HomeActivity extends AppCompatActivity
         } else if (flag.equals(DataEnum.callGetJobs.name())) {
 
             textDropdownJob.setText(name);
+        } else if (flag.equals(DataEnum.callGetMettings.name())) {
+
+            textDropdownMeeting.setText(name);
         } else if (flag.equals(DataEnum.callGetQualifications.name())) {
 
             textDropdownQualification.setText(name);

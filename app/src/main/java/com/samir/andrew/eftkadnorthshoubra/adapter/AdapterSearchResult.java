@@ -109,6 +109,30 @@ public class AdapterSearchResult extends RecyclerView.Adapter<AdapterSearchResul
             goToServiceDetails.putExtra("from", DataEnum.viewItem.name());
 
             SingletonSearchResult.getInstance().setFather(data.get(getAdapterPosition()).getFather());
+            SingletonSearchResult.getInstance().setMember_baptism_data(data.get(getAdapterPosition()).getMember_baptism_data());
+            SingletonSearchResult.getInstance().setMember_birthdate(data.get(getAdapterPosition()).getMember_birthdate());
+            SingletonSearchResult.getInstance().setMember_discription_in_family(data.get(getAdapterPosition()).getMember_discription_in_family());
+            SingletonSearchResult.getInstance().setMember_facebook_link(data.get(getAdapterPosition()).getMember_facebook_link());
+            SingletonSearchResult.getInstance().setMember_flat_no(data.get(getAdapterPosition()).getMember_flat_no());
+            SingletonSearchResult.getInstance().setMember_floor_no(data.get(getAdapterPosition()).getMember_floor_no());
+            SingletonSearchResult.getInstance().setMember_graduation_year(data.get(getAdapterPosition()).getMember_graduation_year());
+            SingletonSearchResult.getInstance().setMember_job(data.get(getAdapterPosition()).getMember_job());
+            SingletonSearchResult.getInstance().setMember_mobile_1(data.get(getAdapterPosition()).getMember_mobile_1());
+            SingletonSearchResult.getInstance().setMember_mobile_2(data.get(getAdapterPosition()).getMember_mobile_2());
+            SingletonSearchResult.getInstance().setMember_phone_1(data.get(getAdapterPosition()).getMember_phone_1());
+            SingletonSearchResult.getInstance().setMember_phone_2(data.get(getAdapterPosition()).getMember_phone_2());
+            SingletonSearchResult.getInstance().setMember_national_id(data.get(getAdapterPosition()).getMember_national_id());
+            SingletonSearchResult.getInstance().setMember_name(data.get(getAdapterPosition()).getMember_name());
+            SingletonSearchResult.getInstance().setMember_qualification(data.get(getAdapterPosition()).getMember_qualification());
+            SingletonSearchResult.getInstance().setMember_social_status(data.get(getAdapterPosition()).getMember_social_status());
+            SingletonSearchResult.getInstance().setMember_street(data.get(getAdapterPosition()).getMember_street());
+            SingletonSearchResult.getInstance().setNotes(data.get(getAdapterPosition()).getNotes());
+            SingletonSearchResult.getInstance().setMember_church(data.get(getAdapterPosition()).getMember_church());
+            SingletonSearchResult.getInstance().setMember_area(data.get(getAdapterPosition()).getMember_area());
+            SingletonSearchResult.getInstance().setKey(data.get(getAdapterPosition()).getKey());
+            SingletonSearchResult.getInstance().setMember_block_no(data.get(getAdapterPosition()).getMember_block_no());
+            SingletonSearchResult.getInstance().setMember_mail(data.get(getAdapterPosition()).getMember_mail());
+            SingletonSearchResult.getInstance().setMember_marriage_date(data.get(getAdapterPosition()).getMember_marriage_date());
 
 
             mContext.startActivity(goToServiceDetails);

@@ -204,7 +204,6 @@ public class HandleAddDataToFirebase {
         final Dialog progressDialog = new ProgressDialog(context, IndicatorStyle.BallBeat).show();
         progressDialog.show();
 
-
         if (HelpMe.getInstance(context).isOnline()) {
 
             DatabaseReference myRefJobs = myRef.child(context.getString(R.string.fire_churchs))
@@ -233,4 +232,37 @@ public class HandleAddDataToFirebase {
 
     }
 
+    public void callEditMember(final String flag, String church, String area, String streetName, ModelMember modelMember,String key) {
+
+        final Dialog progressDialog = new ProgressDialog(context, IndicatorStyle.BallBeat).show();
+        progressDialog.show();
+
+        if (HelpMe.getInstance(context).isOnline()) {
+
+            DatabaseReference myRefJobs = myRef.child(context.getString(R.string.fire_churchs))
+                    .child(church)
+                    .child(context.getString(R.string.fire_areas))
+                    .child(area)
+                    .child(streetName)
+                    .child(context.getString(R.string.fire_members))
+                    .child(key);
+
+            myRefJobs.setValue(modelMember, new DatabaseReference.CompletionListener() {
+                public void onComplete(DatabaseError error, DatabaseReference ref) {
+
+                    if (error == null) {
+                        clickListener.onDataAddedSuccess(flag);
+                    } else {
+                        clickListener.onDataAddedFailed(flag);
+                    }
+
+                    progressDialog.dismiss();
+                }
+            });
+        } else {
+            TastyToast.makeText(context, context.getString(R.string.connection_error), TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+            progressDialog.dismiss();
+        }
+
+    }
 }

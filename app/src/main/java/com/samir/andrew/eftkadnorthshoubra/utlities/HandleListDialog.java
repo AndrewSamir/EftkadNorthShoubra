@@ -298,6 +298,89 @@ public class HandleListDialog {
         }
     }
 
+    /////////////////////////////////////////////////////////////////////////////////////////
+
+    public void callGetFathersLogin(final String flag, String church) {
+        final Dialog progressDialog = new ProgressDialog(context, IndicatorStyle.BallBeat).show();
+        progressDialog.show();
+        if (isOnline()) {
+            DatabaseReference myRefJobs = myRef.child(context.getString(R.string.fire_churchs))
+                    .child(church)
+                    .child(context.getString(R.string.fire_fathers));
+
+            myRefJobs.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    // This method is called once with the initial value and again
+                    // whenever data at this location is updated.
+                    ArrayList<String> stringArrayList = new ArrayList<String>();
+                    ArrayList<String> mailArrayList = new ArrayList<String>();
+
+                    Iterable<DataSnapshot> myChildren = dataSnapshot.getChildren();
+
+                    while (myChildren.iterator().hasNext()) {
+                        DataSnapshot myChild = myChildren.iterator().next();
+                        stringArrayList.add(myChild.child(context.getString(R.string.fire_father_name)).getValue().toString());
+                        mailArrayList.add(myChild.child(context.getString(R.string.fire_father_app_mail)).getValue().toString());
+                    }
+                    populate(stringArrayList, mailArrayList, flag, context.getString(R.string.fathers));
+                    progressDialog.dismiss();
+                }
+
+
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    // Failed to read value
+
+                    Log.d("valueError", error.toString());
+                }
+            });
+        } else {
+            TastyToast.makeText(context, context.getString(R.string.connection_error), TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+            progressDialog.dismiss();
+        }
+    }
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+    public void callGetMeetingsSearch(final String flag, String church) {
+        final Dialog progressDialog = new ProgressDialog(context, IndicatorStyle.BallBeat).show();
+        progressDialog.show();
+        if (isOnline()) {
+            DatabaseReference myRefJobs = myRef.child(context.getString(R.string.fire_churchs))
+                    .child(church)
+                    .child(context.getString(R.string.fire_meetings));
+
+            myRefJobs.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    // This method is called once with the initial value and again
+                    // whenever data at this location is updated.
+                    ArrayList<String> stringArrayList = new ArrayList<String>();
+                    Iterable<DataSnapshot> myChildren = dataSnapshot.getChildren();
+
+                    while (myChildren.iterator().hasNext()) {
+                        DataSnapshot myChild = myChildren.iterator().next();
+                        stringArrayList.add(myChild.getValue().toString());
+                    }
+                    populate(stringArrayList, flag, context.getString(R.string.fathers));
+                    progressDialog.dismiss();
+                }
+
+
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    // Failed to read value
+
+                    Log.d("valueError", error.toString());
+                }
+            });
+        } else {
+            TastyToast.makeText(context, context.getString(R.string.connection_error), TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+            progressDialog.dismiss();
+        }
+    }
+
 /////////////////////////////////////////////////////////////////////////////////////////
 
     public void callGetMeetings(final String flag, String church) {
@@ -346,6 +429,13 @@ public class HandleListDialog {
         }
     }
 
+    private void populate(ArrayList<String> jobItems, ArrayList<String> mailText, String flag, String dialogTitle) {
+
+        if (jobItems.size() > 0) {
+            ShowDIalog(jobItems, mailText, flag, dialogTitle);
+        }
+    }
+
     private void populateCheckboxes(ArrayList<String> jobItems, String flag, String dialogTitle) {
 
         if (jobItems.size() > 0) {
@@ -365,6 +455,27 @@ public class HandleListDialog {
 
                         if (clickListener != null)
                             clickListener.onClickDialog(text + "", flag);
+                        //Log.e("loge", text + "" + which);
+                        dialog.dismiss();
+                        return true;
+                    }
+                })
+                .negativeText(context.getString(R.string.cancel))
+                .show();
+    }
+
+    private void ShowDIalog(final ArrayList<String> arrName, final ArrayList<String> mailText, final String flag, String dialogTitle) {
+        new MaterialDialog.Builder(context)
+                .title(dialogTitle)
+                .items(arrName)
+
+                .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice() {
+                    @Override
+                    public boolean onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
+                        // String name=text+"";
+
+                        if (clickListener != null)
+                            clickListener.onClickDialog(text + "," + mailText.get(arrName.indexOf(text)), flag);
                         //Log.e("loge", text + "" + which);
                         dialog.dismiss();
                         return true;

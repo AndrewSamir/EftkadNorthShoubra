@@ -9,10 +9,13 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
         app:cardCornerRadius="@dimen/_10sdp"
         app:cardElevation="@dimen/_3sdp">
 
         <LinearLayout
+            android:background="#faa41a"
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"

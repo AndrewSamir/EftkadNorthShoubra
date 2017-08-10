@@ -1,6 +1,7 @@
 package com.samir.andrew.eftkadnorthshoubra.views.activities;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,6 +19,7 @@ import com.samir.andrew.eftkadnorthshoubra.R;
 import com.samir.andrew.eftkadnorthshoubra.interfaces.InterfaceAddDataToFirebase;
 import com.samir.andrew.eftkadnorthshoubra.interfaces.InterfaceDailogClicked;
 import com.samir.andrew.eftkadnorthshoubra.models.newMember.ModelMember;
+import com.samir.andrew.eftkadnorthshoubra.singleton.SingletonSearchResult;
 import com.samir.andrew.eftkadnorthshoubra.utlities.DataEnum;
 import com.samir.andrew.eftkadnorthshoubra.utlities.HandleAddDataToFirebase;
 import com.samir.andrew.eftkadnorthshoubra.utlities.HandleListDialog;
@@ -159,7 +162,6 @@ public class EnterNewMember extends AppCompatActivity implements InterfaceDailog
         HandleListDialog.getInstance(this).callGetQualifications(DataEnum.callGetQualifications.name());
     }
 
-
     //dropdown street
     @Bind(R.id.textDropdownStreet)
     TextView textDropdownStreet;
@@ -186,33 +188,30 @@ public class EnterNewMember extends AppCompatActivity implements InterfaceDailog
     @Bind(R.id.edtEnterNewMemberNotes)
     EditText edtEnterNewMemberNotes;
 
+    @Bind(R.id.btnEnterNewMemberAdd)
+    Button btnEnterNewMemberAdd;
+
     @OnClick(R.id.btnEnterNewMemberAdd)
     public void onClickbtnEnterNewMemberAdd() {
         if (validate()) {
-            callAddNewMember();
+
+            if (btnEnterNewMemberAdd.getText().toString().equals(getString(R.string.edit))) {
+
+                callEditMember();
+            } else
+                callAddNewMember();
         }
     }
 
-    @OnClick(R.id.btnAddMemberMeeting)
-    public void onClickbtnAddMemberMeeting() {
-        if (!textDropdownChurch.getText().toString().equals(getString(R.string.choose_church)))
-            HandleListDialog.getInstance(this).callGetMeetings(DataEnum.callGetMettings.name(), textDropdownChurch.getText().toString());
-        else {
-
-            textDropdownChurch.setError(getString(R.string.required_field));
-            textDropdownChurch.setFocusable(true);
-            textDropdownChurch.requestFocus();
-        }
-    }
-
-    @Bind(R.id.linearMemberMeetings)
-    LinearLayout linearMemberMeetings;
-
-    private void callAddNewMember() {
+    private void callEditMember() {
 
         ModelMember modelMember = new ModelMember();
         modelMember.setMember_name(edtEnterNewMemberName.getText().toString());
         modelMember.setMember_street(textDropdownStreet.getText().toString());
+        modelMember.setMember_church(textDropdownChurch.getText().toString());
+        modelMember.setMember_area(textDropdownArea.getText().toString());
+        modelMember.setKey("e");
+
 
         if (edtEnterNewMemberBlockNumber.getText().toString().length() > 0) {
             modelMember.setMember_block_no(edtEnterNewMemberBlockNumber.getText().toString());
@@ -260,17 +259,17 @@ public class EnterNewMember extends AppCompatActivity implements InterfaceDailog
             modelMember.setMember_phone_2("e");
         }
 
-        if (edtEnterNewMemberBirthdate.getText().toString().equals(getString(R.string.hint_birthdate))) {
+        if (edtEnterNewMemberBirthdate.getText().toString().length() > 0) {
             modelMember.setMember_birthdate(edtEnterNewMemberBirthdate.getText().toString());
         } else {
             modelMember.setMember_birthdate("e");
         }
-        if (edtEnterNewMemberBaptismDate.getText().toString().equals(getString(R.string.hint_baptism))) {
+        if (edtEnterNewMemberBaptismDate.getText().toString().length() > 0) {
             modelMember.setMember_baptism_data(edtEnterNewMemberBaptismDate.getText().toString());
         } else {
             modelMember.setMember_baptism_data("e");
         }
-        if (edtEnterNewMemberMiraggeDate.getText().toString().equals(getString(R.string.hint_mirrage))) {
+        if (edtEnterNewMemberMiraggeDate.getText().toString().length() > 0) {
             modelMember.setMember_marriage_date(edtEnterNewMemberMiraggeDate.getText().toString());
         } else {
             modelMember.setMember_marriage_date("e");
@@ -319,7 +318,6 @@ public class EnterNewMember extends AppCompatActivity implements InterfaceDailog
             modelMember.setMember_facebook_link("e");
         }
 
-
         if (edtEnterNewMemberGraduationYear.getText().toString().length() > 0) {
             modelMember.setMember_graduation_year(edtEnterNewMemberGraduationYear.getText().toString());
         } else {
@@ -336,6 +334,157 @@ public class EnterNewMember extends AppCompatActivity implements InterfaceDailog
             modelMember.setNotes("e");
         }
 
+        HandleAddDataToFirebase.getInstance(this).callEditMember(DataEnum.callAddMember.name(),
+                textDropdownChurch.getText().toString(),
+                textDropdownArea.getText().toString(),
+                textDropdownStreet.getText().toString(),
+                modelMember, SingletonSearchResult.getInstance().getKey());
+    }
+
+    @OnClick(R.id.btnAddMemberMeeting)
+    public void onClickbtnAddMemberMeeting() {
+        if (!textDropdownChurch.getText().toString().equals(getString(R.string.choose_church)))
+            HandleListDialog.getInstance(this).callGetMeetings(DataEnum.callGetMettings.name(), textDropdownChurch.getText().toString());
+        else {
+
+            textDropdownChurch.setError(getString(R.string.required_field));
+            textDropdownChurch.setFocusable(true);
+            textDropdownChurch.requestFocus();
+        }
+    }
+
+    @Bind(R.id.linearMemberMeetings)
+    LinearLayout linearMemberMeetings;
+
+    private void callAddNewMember() {
+
+        ModelMember modelMember = new ModelMember();
+        modelMember.setMember_name(edtEnterNewMemberName.getText().toString());
+        modelMember.setMember_street(textDropdownStreet.getText().toString());
+        modelMember.setMember_church(textDropdownChurch.getText().toString());
+        modelMember.setMember_area(textDropdownArea.getText().toString());
+        modelMember.setKey("e");
+
+
+        if (edtEnterNewMemberBlockNumber.getText().toString().length() > 0) {
+            modelMember.setMember_block_no(edtEnterNewMemberBlockNumber.getText().toString());
+        } else {
+            modelMember.setMember_block_no("e");
+        }
+
+        if (edtEnterNewMemberFloor.getText().toString().length() > 0) {
+            modelMember.setMember_floor_no(edtEnterNewMemberFloor.getText().toString());
+        } else {
+            modelMember.setMember_floor_no("e");
+        }
+
+
+        if (edtEnterNewMemberFlat.getText().toString().length() > 0) {
+            modelMember.setMember_flat_no(edtEnterNewMemberFlat.getText().toString());
+        } else {
+            modelMember.setMember_flat_no("e");
+        }
+
+
+        if (edtEnterNewMemberMobile_1.getText().toString().length() > 0) {
+            modelMember.setMember_mobile_1(edtEnterNewMemberMobile_1.getText().toString());
+        } else {
+            modelMember.setMember_mobile_1("e");
+        }
+
+        if (edtEnterNewMemberMobile_2.getText().toString().length() > 0) {
+            modelMember.setMember_mobile_2(edtEnterNewMemberMobile_2.getText().toString());
+        } else {
+            modelMember.setMember_mobile_2("e");
+        }
+
+
+        if (edtEnterNewMemberPhone_1.getText().toString().length() > 0) {
+            modelMember.setMember_phone_1(edtEnterNewMemberPhone_1.getText().toString());
+        } else {
+            modelMember.setMember_phone_1("e");
+        }
+
+
+        if (edtEnterNewMemberPhone_2.getText().toString().length() > 0) {
+            modelMember.setMember_phone_2(edtEnterNewMemberPhone_2.getText().toString());
+        } else {
+            modelMember.setMember_phone_2("e");
+        }
+        if (edtEnterNewMemberBirthdate.getText().toString().length() > 0) {
+            modelMember.setMember_birthdate(edtEnterNewMemberBirthdate.getText().toString());
+        } else {
+            modelMember.setMember_birthdate("e");
+        }
+        if (edtEnterNewMemberBaptismDate.getText().toString().length() > 0) {
+            modelMember.setMember_baptism_data(edtEnterNewMemberBaptismDate.getText().toString());
+        } else {
+            modelMember.setMember_baptism_data("e");
+        }
+        if (edtEnterNewMemberMiraggeDate.getText().toString().length() > 0) {
+            modelMember.setMember_marriage_date(edtEnterNewMemberMiraggeDate.getText().toString());
+        } else {
+            modelMember.setMember_marriage_date("e");
+        }
+
+        if (!textDropdownQualification.getText().toString().equals(getString(R.string.choose_qualification))) {
+            modelMember.setMember_qualification(textDropdownQualification.getText().toString());
+        } else {
+            modelMember.setMember_qualification("e");
+        }
+
+        if (!textDropdownJob.getText().toString().equals(getString(R.string.choose_Job))) {
+            modelMember.setMember_job(textDropdownJob.getText().toString());
+        } else {
+            modelMember.setMember_job("e");
+        }
+
+        if (edtEnterNewMemberNationalId.getText().toString().length() > 0) {
+            modelMember.setMember_national_id(edtEnterNewMemberNationalId.getText().toString());
+        } else {
+            modelMember.setMember_national_id("e");
+        }
+
+        if (edtEnterNewMemberMail.getText().toString().length() > 0) {
+            modelMember.setMember_mail(edtEnterNewMemberMail.getText().toString());
+        } else {
+            modelMember.setMember_mail("e");
+        }
+
+
+        if (edtEnterNewMemberFather.getText().toString().length() > 0) {
+            modelMember.setFather(edtEnterNewMemberFather.getText().toString());
+        } else {
+            modelMember.setFather("e");
+        }
+
+        if (edtEnterNewMemberRelationshipInFamily.getText().toString().length() > 0) {
+            modelMember.setMember_discription_in_family(edtEnterNewMemberRelationshipInFamily.getText().toString());
+        } else {
+            modelMember.setMember_discription_in_family("e");
+        }
+
+        if (edtEnterNewMemberFacebook.getText().toString().length() > 0) {
+            modelMember.setMember_facebook_link(edtEnterNewMemberFacebook.getText().toString());
+        } else {
+            modelMember.setMember_facebook_link("e");
+        }
+
+        if (edtEnterNewMemberGraduationYear.getText().toString().length() > 0) {
+            modelMember.setMember_graduation_year(edtEnterNewMemberGraduationYear.getText().toString());
+        } else {
+            modelMember.setMember_graduation_year("e");
+        }
+        if (edtEnterNewMemberSocialStatus.getText().toString().length() > 0) {
+            modelMember.setMember_social_status(edtEnterNewMemberSocialStatus.getText().toString());
+        } else {
+            modelMember.setMember_social_status("e");
+        }
+        if (edtEnterNewMemberNotes.getText().toString().length() > 0) {
+            modelMember.setNotes(edtEnterNewMemberNotes.getText().toString());
+        } else {
+            modelMember.setNotes("e");
+        }
 
         HandleAddDataToFirebase.getInstance(this).callAddMember(DataEnum.callAddMember.name(),
                 textDropdownChurch.getText().toString(),
@@ -358,6 +507,113 @@ public class EnterNewMember extends AppCompatActivity implements InterfaceDailog
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         HelpMe.getInstance(this).hideKeyBoard(this);
+
+        Intent intent = getIntent();
+
+        try {
+            if (intent.getStringExtra("from").equals(DataEnum.viewItem.name())) {
+                toolbar.setTitle(getString(R.string.edit));
+                setSearchData();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setSearchData() {
+
+        edtEnterNewMemberName.setText(SingletonSearchResult.getInstance().getMember_name());
+        textDropdownChurch.setText(SingletonSearchResult.getInstance().getMember_church());
+        textDropdownArea.setText(SingletonSearchResult.getInstance().getMember_area());
+        textDropdownStreet.setText(SingletonSearchResult.getInstance().getMember_street());
+
+        if (!SingletonSearchResult.getInstance().getMember_block_no().equals("e")) {
+
+            edtEnterNewMemberBlockNumber.setText(SingletonSearchResult.getInstance().getMember_block_no());
+        }
+
+        if (!SingletonSearchResult.getInstance().getMember_floor_no().equals("e")) {
+
+            edtEnterNewMemberFloor.setText(SingletonSearchResult.getInstance().getMember_floor_no());
+        }
+
+        if (!SingletonSearchResult.getInstance().getMember_flat_no().equals("e")) {
+
+            edtEnterNewMemberFlat.setText(SingletonSearchResult.getInstance().getMember_flat_no());
+        }
+        if (!SingletonSearchResult.getInstance().getMember_mobile_1().equals("e")) {
+
+            edtEnterNewMemberMobile_1.setText(SingletonSearchResult.getInstance().getMember_mobile_1());
+        }
+        if (!SingletonSearchResult.getInstance().getMember_mobile_2().equals("e")) {
+
+            edtEnterNewMemberMobile_2.setText(SingletonSearchResult.getInstance().getMember_mobile_2());
+        }
+        if (!SingletonSearchResult.getInstance().getMember_phone_1().equals("e")) {
+
+            edtEnterNewMemberPhone_1.setText(SingletonSearchResult.getInstance().getMember_phone_1());
+        }
+        if (!SingletonSearchResult.getInstance().getMember_phone_2().equals("e")) {
+
+            edtEnterNewMemberPhone_2.setText(SingletonSearchResult.getInstance().getMember_phone_2());
+        }
+        if (!SingletonSearchResult.getInstance().getMember_birthdate().equals("e")) {
+
+            edtEnterNewMemberBirthdate.setText(SingletonSearchResult.getInstance().getMember_birthdate());
+        }
+        if (!SingletonSearchResult.getInstance().getMember_national_id().equals("e")) {
+
+            edtEnterNewMemberNationalId.setText(SingletonSearchResult.getInstance().getMember_national_id());
+        }
+        if (!SingletonSearchResult.getInstance().getMember_mail().equals("e")) {
+
+            edtEnterNewMemberMail.setText(SingletonSearchResult.getInstance().getMember_mail());
+        }
+        if (!SingletonSearchResult.getInstance().getFather().equals("e")) {
+
+            edtEnterNewMemberFather.setText(SingletonSearchResult.getInstance().getFather());
+        }
+        if (!SingletonSearchResult.getInstance().getMember_baptism_data().equals("e")) {
+
+            edtEnterNewMemberBaptismDate.setText(SingletonSearchResult.getInstance().getMember_baptism_data());
+        }
+        if (!SingletonSearchResult.getInstance().getMember_discription_in_family().equals("e")) {
+
+            edtEnterNewMemberRelationshipInFamily.setText(SingletonSearchResult.getInstance().getMember_discription_in_family());
+        }
+
+
+        if (!SingletonSearchResult.getInstance().getMember_facebook_link().equals("e")) {
+
+            edtEnterNewMemberFacebook.setText(SingletonSearchResult.getInstance().getMember_facebook_link());
+        }
+        if (!SingletonSearchResult.getInstance().getMember_graduation_year().equals("e")) {
+
+            edtEnterNewMemberGraduationYear.setText(SingletonSearchResult.getInstance().getMember_graduation_year());
+        }
+        if (!SingletonSearchResult.getInstance().getMember_qualification().equals("e")) {
+
+            textDropdownQualification.setText(SingletonSearchResult.getInstance().getMember_qualification());
+        }
+        if (!SingletonSearchResult.getInstance().getMember_job().equals("e")) {
+
+            textDropdownJob.setText(SingletonSearchResult.getInstance().getMember_job());
+        }
+        if (!SingletonSearchResult.getInstance().getMember_marriage_date().equals("e")) {
+
+            edtEnterNewMemberMiraggeDate.setText(SingletonSearchResult.getInstance().getMember_marriage_date());
+        }
+        if (!SingletonSearchResult.getInstance().getMember_social_status().equals("e")) {
+
+            edtEnterNewMemberSocialStatus.setText(SingletonSearchResult.getInstance().getMember_social_status());
+        }
+        if (!SingletonSearchResult.getInstance().getNotes().equals("e")) {
+
+            edtEnterNewMemberNotes.setText(SingletonSearchResult.getInstance().getNotes());
+        }
+
+        btnEnterNewMemberAdd.setText(getString(R.string.edit));
+
     }
 
     @Override
@@ -462,6 +718,7 @@ public class EnterNewMember extends AppCompatActivity implements InterfaceDailog
     public void onDateSet(com.wdullaer.materialdatetimepicker.date.DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
 
         java.text.SimpleDateFormat simpleDateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+        calendar.set(year, monthOfYear, dayOfMonth);
         if (textDate.equals(DataEnum.Birthdate.name())) {
             edtEnterNewMemberBirthdate.setText(simpleDateFormat.format(calendar.getTime()));
         } else if (textDate.equals(DataEnum.Baptism.name())) {

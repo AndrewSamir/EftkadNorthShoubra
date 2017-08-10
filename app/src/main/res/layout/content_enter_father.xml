@@ -40,6 +40,7 @@
             android:layout_marginBottom="@dimen/marginBottom"
             android:background="@drawable/dropdown_background"
             android:hint="@string/mobile_1"
+            android:inputType="numberDecimal"
             android:padding="@dimen/_5sdp"
             android:textSize="@dimen/textSize" />
 
@@ -50,6 +51,18 @@
             android:layout_marginBottom="@dimen/marginBottom"
             android:background="@drawable/dropdown_background"
             android:hint="@string/mobile_2"
+            android:inputType="numberDecimal"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <EditText
+            android:id="@+id/edtEnterFatherAppMail"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:hint="@string/app_mail"
+            android:inputType="textEmailAddress"
             android:padding="@dimen/_5sdp"
             android:textSize="@dimen/textSize" />
 

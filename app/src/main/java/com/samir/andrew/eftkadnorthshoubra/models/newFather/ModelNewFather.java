@@ -6,9 +6,17 @@ package com.samir.andrew.eftkadnorthshoubra.models.newFather;
 
 public class ModelNewFather {
 
-    public String father_consercation_date, father_mobile_1, father_mobile_2, father_name;
+    public String father_consercation_date, father_mobile_1, father_mobile_2, father_name,father_app_mail;
 
     public ModelNewFather() {
+    }
+
+    public String getFather_app_mail() {
+        return father_app_mail;
+    }
+
+    public void setFather_app_mail(String father_app_mail) {
+        this.father_app_mail = father_app_mail;
     }
 
     public String getFather_consercation_date() {

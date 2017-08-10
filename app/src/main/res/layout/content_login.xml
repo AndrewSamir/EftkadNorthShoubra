@@ -1,54 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/activityMargin"
-    android:gravity="center"
     android:orientation="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:scrollbars="none"
     tools:context="com.samir.andrew.eftkadnorthshoubra.views.activities.Login"
     tools:showIn="@layout/activity_login">
 
-    <ImageView
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher" />
-
-    <EditText
-        android:id="@+id/edtLoginMail"
-
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/viewHeight"
-        android:layout_marginBottom="@dimen/marginBottom"
-        android:layout_marginTop="@dimen/marginTop"
-        android:background="@drawable/dropdown_background"
-        android:hint="@string/user_name"
-        android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/textSize" />
-
-    <EditText
-        android:id="@+id/edtLoginPassword"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/viewHeight"
-        android:layout_marginBottom="@dimen/marginBottom"
-        android:background="@drawable/dropdown_background"
-        android:hint="@string/password"
-        android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/textSize" />
-
-    <Button
-        android:id="@+id/btn"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/marginBottom"
-        android:layout_marginTop="@dimen/marginTop"
-        android:background="@drawable/button_background_primary"
-        android:padding="@dimen/_5sdp"
-        android:text="@string/login"
-        android:textColor="@color/colorWhite"
-        android:textSize="@dimen/textSize" />
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
 
-</LinearLayout>
+        <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:layout_marginTop="@dimen/marginTop">
+
+            <include layout="@layout/dropdown_church" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginBottom">
+
+            <include layout="@layout/dropdown_father" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edtLoginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewHeight"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/dropdown_background"
+            android:gravity="right|center_vertical"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/textSize" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:layout_marginTop="@dimen/marginTop"
+            android:background="@drawable/button_background_primary"
+            android:padding="@dimen/_5sdp"
+            android:text="@string/login"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/textSize" />
+
+    </LinearLayout>
+</ScrollView>

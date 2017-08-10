@@ -11,7 +11,7 @@ public class SingletonSearchResult {
     private String father, member_baptism_data, member_birthdate, member_block_no, member_discription_in_family,
             member_facebook_link, member_flat_no, member_floor_no, member_graduation_year, member_job, member_mail,
             member_marriage_date, member_mobile_1, member_mobile_2, member_name, member_national_id, member_phone_1,
-            member_phone_2, member_qualification, member_social_status, notes;
+            member_phone_2, member_qualification, member_social_status, notes,member_street,member_church,member_area,key;
 
     private SingletonSearchResult() {
     }
@@ -29,6 +29,14 @@ public class SingletonSearchResult {
 
     public static void setmInstance(SingletonSearchResult mInstance) {
         SingletonSearchResult.mInstance = mInstance;
+    }
+
+    public String getMember_street() {
+        return member_street;
+    }
+
+    public void setMember_street(String member_street) {
+        this.member_street = member_street;
     }
 
     public String getFather() {
@@ -197,5 +205,29 @@ public class SingletonSearchResult {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public String getMember_church() {
+        return member_church;
+    }
+
+    public void setMember_church(String member_church) {
+        this.member_church = member_church;
+    }
+
+    public String getMember_area() {
+        return member_area;
+    }
+
+    public void setMember_area(String member_area) {
+        this.member_area = member_area;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 }

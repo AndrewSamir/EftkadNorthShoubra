@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/activityMargin"
+    android:layout_marginLeft="@dimen/activityMargin"
+    android:layout_marginRight="@dimen/activityMargin"
     android:orientation="vertical"
     android:scrollbars="none"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -12,10 +13,12 @@
     tools:showIn="@layout/activity_enter_new_member">
 
     <LinearLayout
-        android:focusable="true"
-        android:focusableInTouchMode="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:paddingBottom="@dimen/_15sdp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:orientation="vertical">
 
         <EditText
@@ -294,11 +297,22 @@
             android:textSize="@dimen/textSize" />
 
         <LinearLayout
+            android:id="@+id/linearMeetingOld"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/marginBottom">
 
             <include layout="@layout/xml_member_meetings" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearDropdownChooseMeeting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:visibility="gone">
+
+            <include layout="@layout/dropdown_meetings" />
         </LinearLayout>
 
         <Button

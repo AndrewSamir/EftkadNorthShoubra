@@ -21,6 +21,7 @@ import com.sdsmdg.tastytoast.TastyToast;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import developer.mokadim.projectmate.SharedPrefUtil;
 
 public class EnterNewArea extends AppCompatActivity implements InterfaceDailogClicked, InterfaceAddDataToFirebase {
 
@@ -67,6 +68,7 @@ public class EnterNewArea extends AppCompatActivity implements InterfaceDailogCl
 
         HandleListDialog.getInstance(this).setClickDialogListener(this);
         HandleAddDataToFirebase.getInstance(this).setClickDialogListener(this);
+        textDropdownChurch.setText(SharedPrefUtil.getInstance(this).read(DataEnum.shChurch.name(), getString(R.string.choose_church)));
 
     }
 

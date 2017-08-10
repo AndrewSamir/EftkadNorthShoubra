@@ -17,6 +17,7 @@ import com.samir.andrew.eftkadnorthshoubra.utlities.HelpMe;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import developer.mokadim.projectmate.SharedPrefUtil;
 
 public class EnterNewStreet extends AppCompatActivity implements InterfaceDailogClicked {
 
@@ -105,6 +106,7 @@ public class EnterNewStreet extends AppCompatActivity implements InterfaceDailog
         HelpMe.getInstance(this).hideKeyBoard(this);
 
         HandleListDialog.getInstance(this).setClickDialogListener(this);
+        textDropdownChurch.setText(SharedPrefUtil.getInstance(this).read(DataEnum.shChurch.name(), getString(R.string.choose_church)));
 
     }
 

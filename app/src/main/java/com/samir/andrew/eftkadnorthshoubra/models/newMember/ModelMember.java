@@ -9,7 +9,7 @@ public class ModelMember {
     public String father, member_baptism_data, member_birthdate, member_block_no, member_discription_in_family,
             member_facebook_link, member_flat_no, member_floor_no, member_graduation_year, member_job, member_mail,
             member_marriage_date, member_mobile_1, member_mobile_2, member_name, member_national_id, member_phone_1,
-            member_phone_2, member_qualification, member_social_status, notes,member_street;
+            member_phone_2, member_qualification, member_social_status, notes,member_street,member_church,member_area,key;
 
     String[] member_meetings;
 
@@ -198,5 +198,29 @@ public class ModelMember {
 
     public void setMember_meetings(String[] member_meetings) {
         this.member_meetings = member_meetings;
+    }
+
+    public String getMember_church() {
+        return member_church;
+    }
+
+    public void setMember_church(String member_church) {
+        this.member_church = member_church;
+    }
+
+    public String getMember_area() {
+        return member_area;
+    }
+
+    public void setMember_area(String member_area) {
+        this.member_area = member_area;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 }

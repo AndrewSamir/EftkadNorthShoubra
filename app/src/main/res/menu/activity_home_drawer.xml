@@ -31,28 +31,16 @@
             android:id="@+id/nav_enter_new_parent"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/enter_new_parent" />
-        <item
-            android:id="@+id/nav_enter_new_user"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/enter_new_user" />
 
         <item
             android:id="@+id/nav_enter_new_member"
             android:icon="@drawable/ic_menu_manage"
             android:title="@string/enter_new_member" />
+
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/logout" />
     </group>
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
-
-</menu>
+  </menu>

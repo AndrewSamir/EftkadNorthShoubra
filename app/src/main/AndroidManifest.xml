@@ -23,11 +23,14 @@
         <activity
             android:name=".views.activities.Login"
             android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:noHistory="true"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
             android:name=".views.activities.HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
@@ -37,7 +40,9 @@
             android:name=".views.activities.EnterNewArea"
             android:label="@string/title_activity_enter_new_area"
             android:parentActivityName=".views.activities.HomeActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateVisible|adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.samir.andrew.eftkadnorthshoubra.views.activities.HomeActivity" />
@@ -46,8 +51,9 @@
             android:name=".views.activities.EnterNewStreet"
             android:label="@string/title_activity_enter_new_street"
             android:parentActivityName=".views.activities.HomeActivity"
+
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysVisible">
+            android:windowSoftInputMode="stateVisible|adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.samir.andrew.eftkadnorthshoubra.views.activities.HomeActivity" />
@@ -56,7 +62,9 @@
             android:name=".views.activities.EnterNewMeeting"
             android:label="@string/title_activity_enter_new_meeting"
             android:parentActivityName=".views.activities.HomeActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateVisible|adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.samir.andrew.eftkadnorthshoubra.views.activities.HomeActivity" />
@@ -65,8 +73,9 @@
             android:name=".views.activities.EnterFather"
             android:label="@string/title_activity_enter_father"
             android:parentActivityName=".views.activities.HomeActivity"
+
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="stateVisible|adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.samir.andrew.eftkadnorthshoubra.views.activities.HomeActivity" />
@@ -76,7 +85,7 @@
             android:label="@string/title_activity_enter_new_job"
             android:parentActivityName=".views.activities.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="stateVisible|adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.samir.andrew.eftkadnorthshoubra.views.activities.HomeActivity" />
@@ -86,7 +95,7 @@
             android:label="@string/title_activity_enter_qualifaction"
             android:parentActivityName=".views.activities.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="stateVisible|adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.samir.andrew.eftkadnorthshoubra.views.activities.HomeActivity" />
@@ -96,7 +105,7 @@
             android:label="@string/title_activity_enter_new_parent"
             android:parentActivityName=".views.activities.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="stateVisible|adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.samir.andrew.eftkadnorthshoubra.views.activities.HomeActivity" />
@@ -104,6 +113,7 @@
         <activity
             android:name=".views.activities.EnterNewUser"
             android:label="@string/title_activity_enter_new_user"
+
             android:parentActivityName=".views.activities.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -113,6 +123,8 @@
         <activity
             android:name=".views.activities.EnterNewMember"
             android:label="@string/title_activity_enter_new_member"
+            android:windowSoftInputMode="stateVisible|adjustResize"
+
             android:parentActivityName=".views.activities.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

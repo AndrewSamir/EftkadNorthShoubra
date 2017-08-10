@@ -2,7 +2,7 @@
     <string name="app_name">كنائس شبرا الشماليه</string>
     <string name="title_activity_login">Login</string>
     <string name="user_name">user name</string>
-    <string name="password">password</string>
+    <string name="password">كلمة المرور</string>
     <string name="login">Login</string>
     <string name="title_activity_home">الرئيسية</string>
 
@@ -94,5 +94,10 @@
     <string name="fire_member_social_statue">member_social_status</string>
     <string name="fire_member_qualification">member_qualification</string>
     <string name="title_activity_search_result">نتائج البحث</string>
+    <string name="edit">تعديل</string>
+    <string name="app_mail">mail</string>
+    <string name="fire_father_app_mail">father_app_mail</string>
+    <string name="logout">تسجيل الخروج</string>
+    <string name="choose_meeting">أختر إجتماع ...</string>
 
 </resources>
